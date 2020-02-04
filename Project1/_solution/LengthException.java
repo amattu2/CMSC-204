@@ -1,7 +1,7 @@
 package _solution;
 
 public class LengthException extends Exception {
-	public LengthException(String Message, Throwable Error) {
-		super(Message, Error);
+	public LengthException(String Message) {
+		super(Message);
 	}
 }
