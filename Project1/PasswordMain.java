@@ -29,6 +29,9 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
+import _solution.PasswordCheckerUtility;
+import _solution.UnmatchedException;
+
 
 
 
@@ -150,7 +153,7 @@ public class PasswordMain extends BorderPane
 		try
 		{
 			if (passwordString.compareTo(passwordAString)!=0)
-				throw new UnmatchedException();
+				throw new UnmatchedException("Passwords do not match");
 			if (PasswordCheckerUtility.isValidPassword(passwordString)) {
 				if (PasswordCheckerUtility.isWeakPassword(passwordString)) {
 					alert.setContentText("Password is OK but weak");

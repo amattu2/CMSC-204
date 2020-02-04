@@ -48,23 +48,23 @@ public class PasswordCheckerUtility {
 		// Checks
 		if (passwordString.length() < 6) {
 			valid = false;
-			throw new LengthException(passwordString);
+			throw new LengthException(passwordString + " must be longer than 6 characters");
 		}
 		if (sequence == true) {
 			valid = false;
-			throw new InvalidSequenceException(passwordString);
+			throw new InvalidSequenceException(passwordString + " must not contain more than 2 characters in a row");
 		}
 		if (upper == false) {
 			valid = false;
-			throw new NoUpperAlphaException(passwordString);
+			throw new NoUpperAlphaException(passwordString + " must include a uppercase alphanumeric character");
 		}
 		if (lower == false) {
 			valid = false;
-			throw new NoLowerAlphaException(passwordString);
+			throw new NoLowerAlphaException(passwordString + " must include a lowercase alphanumeric character");
 		}
 		if (digit == false) {
 			valid = false;
-			throw new NoDigitException(passwordString);
+			throw new NoDigitException(passwordString + " must include a digit");
 		}
 		
 		// Return
@@ -86,7 +86,7 @@ public class PasswordCheckerUtility {
 	}
 	
 	/**
-	 * Returns a arraylist of valid passwords
+	 * Returns a arraylist of INVALID (per documentation) passwords
 	 * 
 	 * @param ArrayList password
 	 * @author Alec M.
@@ -96,18 +96,18 @@ public class PasswordCheckerUtility {
 	 */	
 	public static ArrayList<String> validPasswords(ArrayList<String> passwords) {
 		// Variables
-		ArrayList<String> valid = new ArrayList<String>();
+		ArrayList<String> invalid = new ArrayList<String>();
 		
 		// Loop
 		passwords.forEach((password) -> {
 			try {
-				if (PasswordCheckerUtility.isValidPassword(password)) {
-					valid.add(password);
-				}
-			} catch (Exception e) {}
+				PasswordCheckerUtility.isValidPassword(password);
+			} catch (Exception e) {
+				invalid.add(e.getMessage());
+			}
 		});
 		
 		// Return
-		return valid;
+		return invalid;
 	}
 }
