@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 /**
  * @author Alec M.
- * @date 01/29/2020
- * @version 0.01
+ * @date 02/06/2020
+ * @version 0.01a
  */
 public class PasswordCheckerUtility {
 	/**
@@ -48,23 +48,23 @@ public class PasswordCheckerUtility {
 		// Checks
 		if (passwordString.length() < 6) {
 			valid = false;
-			throw new LengthException(passwordString + " must be longer than 6 characters");
+			throw new LengthException(passwordString + " The password must be at least 6 characters long");
 		}
 		if (sequence == true) {
 			valid = false;
-			throw new InvalidSequenceException(passwordString + " must not contain more than 2 characters in a row");
+			throw new InvalidSequenceException(passwordString + " The password cannot contain more than two of the same character in sequence.");
 		}
 		if (upper == false) {
 			valid = false;
-			throw new NoUpperAlphaException(passwordString + " must include a uppercase alphanumeric character");
+			throw new NoUpperAlphaException(passwordString + " The password must contain at least one uppercase alphabetic character");
 		}
 		if (lower == false) {
 			valid = false;
-			throw new NoLowerAlphaException(passwordString + " must include a lowercase alphanumeric character");
+			throw new NoLowerAlphaException(passwordString + " The password must contain at least one lowercase alphabetic character");
 		}
 		if (digit == false) {
 			valid = false;
-			throw new NoDigitException(passwordString + " must include a digit");
+			throw new NoDigitException(passwordString + " The password must contain at least one digit");
 		}
 		
 		// Return
@@ -79,6 +79,7 @@ public class PasswordCheckerUtility {
 	 * @date 01/29/2020
 	 * @version 0.01
 	 * @throws None
+	 * @return Boolean weak
 	 */
 	public static boolean isWeakPassword(String passwordString) {
 		// Return
@@ -93,6 +94,7 @@ public class PasswordCheckerUtility {
 	 * @date 01/29/2020
 	 * @version 0.01
 	 * @throws None
+	 * @return ArrayList<String> invalid passwords
 	 */	
 	public static ArrayList<String> validPasswords(ArrayList<String> passwords) {
 		// Variables

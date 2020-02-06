@@ -153,7 +153,7 @@ public class PasswordMain extends BorderPane
 		try
 		{
 			if (passwordString.compareTo(passwordAString)!=0)
-				throw new UnmatchedException("Passwords do not match");
+				throw new UnmatchedException("The passwords do not match");
 			if (PasswordCheckerUtility.isValidPassword(passwordString)) {
 				if (PasswordCheckerUtility.isWeakPassword(passwordString)) {
 					alert.setContentText("Password is OK but weak");
