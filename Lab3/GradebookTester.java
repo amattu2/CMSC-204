@@ -43,7 +43,6 @@ public class GradebookTester {
 
 	@Test
 	public void testMinimum() {
-		// Test .minimum
 		assertTrue(62.0 == gb1.minimum());
 		assertTrue(76.0 == gb2.minimum());
 	}
