@@ -78,5 +78,38 @@ public class GradeBook
       else
          return sum() - minimum();
    }
+   
+   /**
+    * Returns the total amount of gradebook scores stored in the array
+    * 
+    * @author Alec M.
+    * @return (Int) Amount of scores stored
+    */
+   public int getScoreSize() {
+	   return this.scoresSize;
+   }
+
+   /**
+    * Convert the list of scores to a string
+    * 
+    * @author Alec M.
+    * @return (String) Gradebook scores
+    */
+   public String toString() {
+	   // Variables
+	   String stringified = "";
+
+	   // Loops
+	   for (int i = 0; i < this.scoresSize; i++) {
+		   // Checks
+		   if (this.scores[i] < 0.0) { continue; }
+		   
+		   // Variables
+		   stringified += (i == 0 ? "" : " ") + this.scores[i];
+	   }
+
+	   // Return
+	   return stringified;
+   }   
 }
 
