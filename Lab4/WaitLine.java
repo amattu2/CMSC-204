@@ -10,7 +10,7 @@ public class WaitLine {
    private int totalTimeWaited;
 
    public WaitLine() {
-      line = new LinkedQueue<>();
+      line = new LinkedQueue<Customer>();
       reset();
    }
 
