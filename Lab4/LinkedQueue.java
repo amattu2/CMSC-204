@@ -5,12 +5,11 @@
  * @date 02/11/2020
  * @version 0.03
  */
-public final class LinkedQueue<T> implements QueueInterface<T> {
+public class LinkedQueue<T> implements QueueInterface<T> {
 	// Class Variables
 	private Node firstnode = null;
 	private Node lastnode = null;
 	
-	@Override
 	public void enqueue(T newEntry) {
 		// Variables
 		Node newNode = new Node(newEntry);
@@ -25,7 +24,6 @@ public final class LinkedQueue<T> implements QueueInterface<T> {
 		lastnode = newNode;
 	}
 
-	@Override
 	public T dequeue() {
 		// Variables
 		T front = null;
@@ -46,24 +44,49 @@ public final class LinkedQueue<T> implements QueueInterface<T> {
 		return front;
 	}
 
-	@Override
 	public T getFront() {
 		// Checks
 		if (this.isEmpty()) {
 			return null;
 		} else {
-			return firstnode.getData();
+			return (T) firstnode.getData();
 		}
 	}
 
-	@Override
 	public boolean isEmpty() {
 		return firstnode == null && lastnode == null;
 	}
 
-	@Override
 	public void clear() {
 		firstnode = null;
 		lastnode = null;
+	}
+	
+	private class Node<T> {
+		// Variables
+		private T data;
+		private Node next;
+		
+		// Constructor
+		public Node(T newNode) {
+			data = newNode;
+		}
+		
+		public void setNextNode(Node nextNode) {
+			next = nextNode;
+		}
+		
+		public void setData(T newData) {
+			data = newData;
+			
+		}
+		
+		public Node<T> getNextNode() {
+			return next;
+		}
+		
+		public T getData() {
+			return data;
+		}		
 	}
 }

@@ -18,9 +18,7 @@ import javafx.stage.Stage;
 
 import javax.swing.JFrame;
 
-public class PasswordDriverFX extends Application{
-	
-   
+public class PasswordDriverFX extends Application {
    public static void main(String[] args){
 	   launch(args);
    }
