@@ -3,18 +3,16 @@
     @author Timothy M. Henry
     @version 5.0
 */
-public class WaitLine
-{
+public class WaitLine {
    private QueueInterface<Customer> line;
    private int numberOfArrivals;
    private int numberServed;
    private int totalTimeWaited;
 
-   public WaitLine()
-   {
+   public WaitLine() {
       line = new LinkedQueue<>();
       reset();
-   } // end default constructor
+   }
 
    /** Simulates a waiting line with one serving agent.
        @param duration  The number of simulated minutes.

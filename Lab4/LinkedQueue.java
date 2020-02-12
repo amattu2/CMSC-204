@@ -62,10 +62,10 @@ public class LinkedQueue<T> implements QueueInterface<T> {
 		lastnode = null;
 	}
 	
-	private class Node<T> {
+	private class Node {
 		// Variables
-		private T data;
-		private Node next;
+		private T data = null;
+		private Node next = null;
 		
 		// Constructor
 		public Node(T newNode) {
@@ -81,7 +81,7 @@ public class LinkedQueue<T> implements QueueInterface<T> {
 			
 		}
 		
-		public Node<T> getNextNode() {
+		public Node getNextNode() {
 			return next;
 		}
 		
