@@ -1,3 +1,5 @@
+package _solution;
+
 /** Simulates a waiting line. 
     @author Frank M. Carrano
     @author Timothy M. Henry

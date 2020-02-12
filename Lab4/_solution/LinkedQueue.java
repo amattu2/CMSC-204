@@ -1,3 +1,5 @@
+package _solution;
+
 /**
  * A LinkedQueue implementation based on Pearson Module #8 - Queues
  * 

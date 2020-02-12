@@ -1,3 +1,5 @@
+package _solution;
+
 /**
    An interface for the ADT queue.   
    @author Frank M. Carrano

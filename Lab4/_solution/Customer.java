@@ -1,3 +1,5 @@
+package _solution;
+
 /**
  * A ADT bag customer implementation
  * 

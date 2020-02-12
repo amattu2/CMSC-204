@@ -1,3 +1,5 @@
+package _solution;
+
 /**
  * A simple driver for the WaitLine.java class implementation
  * 
