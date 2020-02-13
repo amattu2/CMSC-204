@@ -1,7 +1,10 @@
-
+/**
+ * @author Alec M.
+ * @date 02/13/2020
+ * @version 0.01a
+ */
 public class RecipientLine implements RecipientLineInterface {
 	public RecipientLine(int i) {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
