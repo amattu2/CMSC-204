@@ -1,107 +1,88 @@
-import java.util.Iterator;
+import java.util.ArrayList;
 
-public class MyStack<E> implements StackInterface<E> {
-	private E[] elements;
-	private int size;
+/**
+ * @author Alec M.
+ * @date 02/13/2020
+ * @version 0.01a
+ */
+@SuppressWarnings("unchecked")
+public class MyStack<T> implements StackInterface<T> {
+	// Variables
+	private ArrayList<T> stack = new ArrayList<T>();
+	private int max;
 	
+	/**
+	 * Constructor method
+	 */
 	public MyStack() {
-		elements = (E[]) (new Object[10]);
-		size = 0;	
+		this.max = 10;
 	}
 	
-	// Constructs a new empty stack.
+	/**
+	 * Constructor method
+	 * 
+	 * @param Int size
+	 */
 	public MyStack(int size) {
-		elements = (E[]) (new Object[size]);
-		size = 0;
+		max = size;
 	}
 	
-	// Returns true if the stack does not contain any elements.
-	public boolean isEmpty() {
-		return size == 0;
-	}
+	/**
+	 * Determine if the stack is empty
+	 * 
+	 * @return Boolean empty
+	 */
+	@Override
+    public boolean isEmpty() {
+        return this.stack.isEmpty();
+    }
 
-	// Returns an Iterator to traverse the elements of this stack.
-	public Iterator<E> iterator() {
-		return new ArrayStackIterator();
-	}
-	
-	// Returns the top element of this stack without removing it.
-	// Throws an EmptyStackException if the stack is empty.
-	public E peek() {
-		if (size == 0) {
-			
-		}
-		return elements[size - 1];
-	}
+    /**
+     * Determine if the stack is full
+     * 
+     * @return Boolean full
+     */
+    @Override
+    public boolean isFull() {
+        return this.stack.size() >= max;
+    }
 
-	// Removes and returns the top element of this stack.
-	// Throws an EmptyStackException if the stack is empty.
-	public E pop() {
-		if (size == 0) {
-			return null;
-		}
-		
-		E top = elements[size - 1];
-		elements[size - 1] = null;
-		size--;
-		return top;
-	}
-
-	// Adds the given value to the top of this stack.
-	public boolean push(E value) {
-		if (size == elements.length) {
-			return false;
-		}
-		elements[size] = value;
-		size++;
-		return true;
-	}
-
-	// Returns the number of elements contained in this stack.
+	@Override
 	public int size() {
-		return size;
+		return this.stack.size();
 	}
 	
-	// An iterator class to traverse the elements of this stack
-	// from top to bottom.
-	private class ArrayStackIterator implements Iterator<E> {
-		private int index;
-		
-		// Constructs an iterator at the beginning (bottom) of this stack.
-		public ArrayStackIterator() {
-			index = size - 1;
-		}
-		
-		// Returns true if there are any more elements for this iterator to return.
-		public boolean hasNext() {
-			return index >= 0;
-		}
+    /**
+     * Add new item to stack
+     * 
+     * @return Boolean success
+     */
+    public boolean push(T item) {
+        // Checks
+    	if (this.isFull()) { return false; }
+    	
+    	// Add
+    	return this.stack.add(item);
+    }
 
-		// Returns the next element from the stack and advances iterator by one slot.
-		public E next() {
-			if (!hasNext()) {
-				
-			}
-			E result = elements[index];
-			index--;
-			return result;
-		}
-	}
+    /**
+     * Return the item at the top of the stack
+     * 
+     * @return T item
+     */
+    public T pop() {
+        // Return
+    	return this.isEmpty() ? null : this.stack.remove(this.stack.size()-1);
+    }
 
+    /**
+     * Return an array of items in the stack
+     * 
+     * @return T array
+     */
 	@Override
-	public boolean isFull() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public E[] toArray() {
-		E[] array = (E[]) new Object[size];
-		
-		for (int i = 0; i < size; i++) {
-			array[i] = elements[i];
-		}
-		
-		return array;
+	public T[] toArray() {
+		// Return
+		return (T[]) this.stack.toArray();
 	}
 }
