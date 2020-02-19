@@ -3,7 +3,7 @@
  * @date 02/13/2020
  * @version 0.01a
  */
-public class Stack implements StackInterface<Object> {
+public class MyStack implements StackInterface<Object> {
 	@Override
 	public boolean isEmpty() {
 		return false;

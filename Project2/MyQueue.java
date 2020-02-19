@@ -5,7 +5,7 @@
  * @date 02/12/2020
  * @version 0.01
  */
-public class LinkedQueue<T> implements QueueInterface<T> {
+public class MyQueue<T> implements QueueInterface<T> {
 	@Override
 	public boolean isFull() {
 		return false;

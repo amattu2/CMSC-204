@@ -4,11 +4,24 @@
  * @version 0.01a
  */
 public class Recipient {
-	public Recipient(String string) {
-
+	// Variables
+	private String n;
+	
+	/**
+	 * Create a new Recipient instance
+	 * 
+	 * @param String name
+	 */
+	public Recipient(String name) {
+		this.n = name;
 	}
-
+	
+	/**
+	 * Get recipient name
+	 * 
+	 * @return String name
+	 */
 	public String getName() {
-		return null;
+		return this.n;
 	}
 }

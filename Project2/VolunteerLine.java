@@ -5,6 +5,7 @@
  */
 public class VolunteerLine implements VolunteerLineInterface {
 	public VolunteerLine(int i) {
+
 	}
 
 	@Override

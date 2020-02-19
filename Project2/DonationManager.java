@@ -5,7 +5,7 @@
  */
 public class DonationManager implements DonationManageInterface {
 	@Override
-	public boolean managerLoadContainer(DonationPackage dPackage) throws ContainerException {
+	public boolean managerLoadContainer(DonationPackage p) throws ContainerException {
 		return false;
 	}
 

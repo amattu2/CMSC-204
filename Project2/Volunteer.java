@@ -4,8 +4,15 @@
  * @version 0.01a
  */
 public class Volunteer {
-	public Volunteer(String string) {
-		
+	// Variables
+	private String n;
+	
+	/**
+	 * Create a Volunteer instance
+	 * 
+	 * @param String name
+	 */
+	public Volunteer(String name) {
+		this.n = name;
 	}
-
 }
