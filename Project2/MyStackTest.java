@@ -30,6 +30,7 @@ public class MyStackTest {
 		System.out.println("Stack pop 2: " + stack.pop());
 		System.out.println("Stack pop 3: " + stack.pop());
 		
+		stack.push("bb");
 		String[] a = stack.toArray();
 		
 		for (int i = 0; i < a.length; i++) {
