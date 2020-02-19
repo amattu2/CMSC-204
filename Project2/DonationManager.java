@@ -4,38 +4,85 @@
  * @version 0.01a
  */
 public class DonationManager implements DonationManageInterface {
+	// Variables
+	private Container container = new Container();
+	private VolunteerLine vline = new VolunteerLine();
+	private RecipientLine rline = new RecipientLine();
+	
+	/**
+	 * Add new package to donation container
+	 * 
+	 * @param DonationPackage package
+	 * @return Boolean success
+	 * @throws ContainerException
+	 */
 	@Override
 	public boolean managerLoadContainer(DonationPackage p) throws ContainerException {
-		return false;
+		// Return
+		return this.container.loadContainer(p);
 	}
 
+	/**
+	 * Add new volunteer to the line
+	 * 
+	 * @param Volunteer volunteer
+	 * @return Boolean success
+	 * @throws VolunteerException
+	 */
 	@Override
 	public boolean managerQueueVolunteer(Volunteer v) throws VolunteerException {
-		return false;
+		// Return
+		return this.vline.addNewVolunteer(v);
 	}
 
+	/**
+	 * Add new recipient to the line
+	 * 
+	 * @param Recipient recipient
+	 * @return Boolean success
+	 * @throws RecipientException
+	 */
 	@Override
 	public boolean managerQueueRecipient(Recipient r) throws RecipientException {
-		return false;
+		// Return
+		return this.rline.addNewRecipient(r);
 	}
 
+	/**
+	 * Simulate package donation
+	 * 
+	 * @return Integer ?
+	 * @throws VolunteerExeption, RecipientException, ContainerException
+	 */
 	@Override
 	public int donatePackage() throws VolunteerException, ContainerException, RecipientException {
-		return 0;
+		// Checks
+		if (this.vline.volunteerLineEmpty()) {
+			throw new VolunteerException("Volunteer Queue is empty");
+		}
+		if (this.rline.recipientLineEmpty()) {
+			throw new RecipientException("Recipient Queue is empty");
+		}
+		
+		// Return
+		return this.container.removePackageFromContainer() != null ? 1 : 0;
 	}
 
 	@Override
 	public DonationPackage[] managerArrayPackage() {
-		return null;
+		// Return
+		return this.container.toArrayPackage();
 	}
 
 	@Override
 	public Volunteer[] managerArrayVolunteer() {
-		return null;
+		// Return
+		return this.vline.toArrayVolunteer();
 	}
 
 	@Override
 	public Recipient[] managerArrayRecipient() {
-		return null;
+		// Return
+		return this.rline.toArrayRecipient();
 	}
 }
