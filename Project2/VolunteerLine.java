@@ -4,27 +4,83 @@
  * @version 0.01a
  */
 public class VolunteerLine implements VolunteerLineInterface {
-	public VolunteerLine(int i) {
-
+	// Variables
+	private MyQueue<Volunteer> queue;
+	
+	/**
+	 * Constructor method
+	 */
+	public VolunteerLine() {
+		this.queue = new MyQueue<Volunteer>(10);
+	}
+	
+	/**
+	 * Constructor method
+	 * 
+	 * @param Int size
+	 */
+	public VolunteerLine(int size) {
+		this.queue = new MyQueue<Volunteer>(size);
 	}
 
+	/**
+	 * Add a volunteer to the queue
+	 * 
+	 * @param Volunteer volunteer
+	 * @return Success
+	 * @throws VolunteerException
+	 */
 	@Override
 	public boolean addNewVolunteer(Volunteer v) throws VolunteerException {
-		return false;
+		// Variables
+		boolean success = this.queue.enqueue(v);
+		
+		// Checks
+		if (!success) {
+			throw new VolunteerException("The Volunteer Queue is Full");
+		}
+		
+		// Return
+		return success;
 	}
 
+	/**
+	 * Return the next volunteer in line
+	 * 
+	 * @return Volunteer volunteer
+	 * @throws VolunteerException
+	 */
 	@Override
 	public Volunteer volunteerTurn() throws VolunteerException {
-		return null;
+		// Variables
+		Volunteer volunteer = this.queue.dequeue();
+		
+		// Checks
+		if (volunteer == null) {
+			throw new VolunteerException("The Volunteer Queue is empty");
+		}
+		
+		// Return
+		return volunteer;
 	}
 
+	/**
+	 * Determine if the line is empty
+	 * 
+	 * @return Boolean empty
+	 */
 	@Override
 	public boolean volunteerLineEmpty() {
-		return false;
+		return this.queue.isEmpty();
 	}
 
+	/**
+	 * Convert the queue to a array
+	 * 
+	 * @return Volunteer[] array
+	 */
 	@Override
 	public Volunteer[] toArrayVolunteer() {
-		return null;
+		return this.queue.toArray();
 	}
 }
