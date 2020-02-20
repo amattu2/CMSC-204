@@ -81,6 +81,18 @@ public class VolunteerLine implements VolunteerLineInterface {
 	 */
 	@Override
 	public Volunteer[] toArrayVolunteer() {
-		return this.queue.toArray();
+		// Variables
+		Volunteer[] newA = new Volunteer[this.queue.size()];
+		Object[] oldA = this.queue.toArray();
+		int i = 0;
+		
+		// Loops
+		for (Object volunteer : oldA) {
+			if (volunteer == null) { continue; }
+			
+			newA[i++] = (Volunteer) volunteer;
+		}
+		
+		return newA;
 	}
 }

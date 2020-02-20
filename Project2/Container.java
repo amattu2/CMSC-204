@@ -71,6 +71,17 @@ public class Container implements ContainerInterface {
 	 */
 	@Override
 	public DonationPackage[] toArrayPackage() {
-		return this.packages.toArray();
+		// Variables
+		DonationPackage[] newA = new DonationPackage[this.packages.size()];
+		Object[] oldA = this.packages.toArray();
+		int i = 0;
+		
+		// Loops
+		for (Object pkg : oldA) {
+			newA[i++] = (DonationPackage) pkg;
+		}
+		
+		// Return
+		return newA;
 	}
 }

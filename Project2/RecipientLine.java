@@ -81,6 +81,18 @@ public class RecipientLine implements RecipientLineInterface {
 	 */
 	@Override
 	public Recipient[] toArrayRecipient() {
-		return this.queue.toArray();
+		// Variables
+		Recipient[] newA = new Recipient[this.queue.size()];
+		Object[] oldA = this.queue.toArray();
+		int i = 0;
+		
+		// Loops
+		for (Object recipient : oldA) {
+			if (recipient == null) { continue; }
+			
+			newA[i++] = (Recipient) recipient;
+		}
+		
+		return newA;
 	}
 }

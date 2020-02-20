@@ -1,6 +1,4 @@
 /**
- * A LinkedQueue implementation based on Pearson Module #8 - Queues
- * 
  * @author Alec M.
  * @date 02/19/2020
  * @version 0.01
@@ -8,7 +6,7 @@
 @SuppressWarnings("unchecked")
 public class MyQueue<T> implements QueueInterface<T> {
 	// Variables
-	private T queue[];
+	private Object queue[];
 	private int max = 0;
 	private int current = 0;
 	private int first = 0;
@@ -19,7 +17,7 @@ public class MyQueue<T> implements QueueInterface<T> {
 	 */
 	public MyQueue() {
 		this.max = 10;
-		this.queue = (T[]) new Object[this.max];
+		this.queue = new Object[this.max];
 	}
 	
 	/**
@@ -29,7 +27,7 @@ public class MyQueue<T> implements QueueInterface<T> {
 	 */
 	public MyQueue(int size) {
 		this.max = size;
-		this.queue = (T[]) new Object[this.max];
+		this.queue = new Object[this.max];
 	}
 	
 	/**
@@ -91,7 +89,7 @@ public class MyQueue<T> implements QueueInterface<T> {
 		
 		// Variables
 		int index = this.first % this.max;
-		T item = this.queue[index];
+		T item = (T) this.queue[index];
 		this.queue[index] = null;
 		this.first += 1;
 		this.current -= 1;
@@ -103,13 +101,13 @@ public class MyQueue<T> implements QueueInterface<T> {
 	@Override
 	public T[] toArray() {
 		// Variables
-		T[] a = (T[]) new Object[this.size()];
+		Object[] a = new Object[this.size()];
 		int ci = 0;
 		
 		// Loops
 		for (int i = 0; i < this.size(); i++) {
 			// Variables
-			T item = this.queue[i];
+			T item = this.getElement(i);
 			
 			// Checks
 			if (null != item) {
@@ -118,6 +116,16 @@ public class MyQueue<T> implements QueueInterface<T> {
 		}
 		
 		// Return
-		return a;
+		return (T[]) a;
+	}
+	
+	/**
+	 * Access element at specified index
+	 * 
+	 * @param Int index
+	 * @return T element
+	 */
+	private T getElement(int i) {
+		return (T) this.queue[i];
 	}
 }
