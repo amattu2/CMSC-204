@@ -24,4 +24,13 @@ public class Recipient {
 	public String getName() {
 		return this.n;
 	}
+	
+	/**
+	 * Create a stringified version of class
+	 * 
+	 * @return String name
+	 */
+	public String toString() {
+		return this.n;
+	}
 }

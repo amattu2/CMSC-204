@@ -47,7 +47,18 @@ public class MyQueue<T> implements QueueInterface<T> {
 	 */
 	@Override
 	public int size() {
-		return this.max - this.current;
+		// Variables
+		int length = 0;
+		
+		// Loops
+		for (int i = 0; i < this.queue.length; i++) {
+			if (this.queue[i] == null) { continue; }
+			
+			length++;
+		}
+		
+		// Return
+		return length;
 	}
 	
 	/**

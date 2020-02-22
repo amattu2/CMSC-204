@@ -36,4 +36,13 @@ public class DonationPackage {
 	public boolean isHeavy() {
 		return this.w >= 20;
 	}
+	
+	/**
+	 * Create a stringified version of class
+	 * 
+	 * @return String description
+	 */
+	public String toString() {
+		return this.d + " (" + this.w + ")";
+	}
 }

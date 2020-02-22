@@ -85,4 +85,8 @@ public class DonationManager implements DonationManageInterface {
 		// Return
 		return this.rline.toArrayRecipient();
 	}
+	
+	public String toString() {
+		return "stringified ?";
+	}
 }

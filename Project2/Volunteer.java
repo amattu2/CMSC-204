@@ -15,4 +15,13 @@ public class Volunteer {
 	public Volunteer(String name) {
 		this.n = name;
 	}
+	
+	/**
+	 * Create a stringified version of class
+	 * 
+	 * @return String name
+	 */
+	public String toString() {
+		return this.n;
+	}
 }
