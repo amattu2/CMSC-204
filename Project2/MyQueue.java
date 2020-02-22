@@ -58,7 +58,7 @@ public class MyQueue<T> implements QueueInterface<T> {
 		}
 		
 		// Return
-		return length;
+		return length > 0 ? length + 1 : 0;
 	}
 	
 	/**
@@ -68,7 +68,7 @@ public class MyQueue<T> implements QueueInterface<T> {
 	 */
 	@Override
 	public boolean isEmpty() {
-		return this.current == 0;
+		return this.size() == 0;
 	}
 	
 	/**
@@ -91,6 +91,11 @@ public class MyQueue<T> implements QueueInterface<T> {
 		return true;
 	}
 
+	/**
+	 * Remove a object
+	 * 
+	 * @return T object
+	 */
 	@Override
 	public T dequeue() {
 		// Checks
@@ -109,6 +114,11 @@ public class MyQueue<T> implements QueueInterface<T> {
 		return item;
 	}
 	
+	/**
+	 * Convert local array of objects to generic array
+	 * 
+	 * @return T[] Array
+	 */
 	@Override
 	public T[] toArray() {
 		// Variables
@@ -117,8 +127,10 @@ public class MyQueue<T> implements QueueInterface<T> {
 		
 		// Loops
 		for (int i = 0; i < this.size(); i++) {
+			if (null == this.queue[i]) { continue; }
+			
 			// Variables
-			T item = this.getElement(i);
+			T item = (T) this.queue[i];
 			
 			// Checks
 			if (null != item) {
@@ -128,15 +140,5 @@ public class MyQueue<T> implements QueueInterface<T> {
 		
 		// Return
 		return (T[]) a;
-	}
-	
-	/**
-	 * Access element at specified index
-	 * 
-	 * @param Int index
-	 * @return T element
-	 */
-	private T getElement(int i) {
-		return (T) this.queue[i];
 	}
 }

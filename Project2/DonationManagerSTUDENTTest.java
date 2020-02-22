@@ -34,7 +34,13 @@ public class DonationManagerSTUDENTTest {
 	 */
 	@Test
 	public void testManagerLoadcontainer()   {
-		fail("Student has not implemented testManagerLoadContainer"); 	 
+		try {
+			manager.managerLoadContainer(new DonationPackage("Paper", 3));
+			manager.managerLoadContainer(new DonationPackage("Computers", 9));
+			manager.managerLoadContainer(new DonationPackage("Desks", 19));	 
+		} catch (ContainerException e) {
+			System.out.println("This test should have not thrown an exception");
+		}	
 	}
 	 
 	/**
@@ -43,8 +49,14 @@ public class DonationManagerSTUDENTTest {
 	 */
 	@Test
 	public void testManagerQueueVolunteer() {
-		fail("Student has not implemented testManagerQueueVolunteer"); 	 
-	
+		try {
+			manager.managerQueueVolunteer(new Volunteer("Alec"));
+			manager.managerQueueVolunteer(new Volunteer("Test 2"));
+			manager.managerQueueVolunteer(new Volunteer("Test 92"));
+			manager.managerQueueVolunteer(new Volunteer("ABC"));
+		} catch (VolunteerException e) {
+			System.out.println("This test should have not thrown an exception");
+		} 	 
 	}
 
 	/**
@@ -53,7 +65,12 @@ public class DonationManagerSTUDENTTest {
 	 */
 	@Test
 	public void testManagerQueueRecipient() {
-		 fail("testManagerQueueRecipient is not implemented");
+		try {
+			manager.managerQueueRecipient(new Recipient("Alec"));
+			manager.managerQueueRecipient(new Recipient("Test 2"));
+		} catch (RecipientException e) {
+			System.out.println("This test should have not thrown an exception");
+		}
 	}
 
 	/**
@@ -62,7 +79,32 @@ public class DonationManagerSTUDENTTest {
 	 */
 	@Test
 	public void testDonatePackage() {
-		fail("Student has not implemented testDonatePackage"); 
+		// Variab;es
+	    Volunteer v1 = new Volunteer("Alec");
+	    Recipient r1 = new Recipient("UMD");
+	    DonationPackage d1 = new DonationPackage("Toshiba Laptops", 4);
+	    DonationPackage d2 = new DonationPackage("Speakers", 1);
+	
+		try {
+			// Add Containers
+			manager.managerLoadContainer(d1);
+			manager.managerLoadContainer(d2);
+			
+			// Can't donate
+			assertEquals(manager.donatePackage(), 1);
+			
+			// Can't donate (No recipient)
+			manager.managerQueueVolunteer(v1);
+			assertEquals(manager.donatePackage(), 2);
+			
+			// Donate
+			manager.managerQueueRecipient(r1);
+			assertEquals(manager.donatePackage(), 0);
+			
+			// Can't donate (No recipient)
+			assertEquals(manager.donatePackage(), 2);
+		} catch (ContainerException | VolunteerException | RecipientException e) {
+			// Not a problem, some tests cause an error
+		}
 	} 
-
 }

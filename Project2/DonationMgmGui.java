@@ -205,8 +205,11 @@ public class DonationMgmGui extends Application {
 			clearText(volunteers);
 
 			for (int i = 0; i < t.length; i++) {
+				// Alec M., 02-22-2020
+				try { 				
 				volunteers[volunteers.length - 1 - i]
 						.setText(((Volunteer) t[i]).toString());
+				} catch(Exception e) {}
 			}
 		} catch (VolunteerException e) {
 
@@ -240,8 +243,11 @@ public class DonationMgmGui extends Application {
 			
 			//display the recipient's queue
 			for (int i = 0; i < t.length; i++) {
+				// Alec M., 02-22-2020
+				try { 
 				recipients[recipients.length - 1 - i]
 						.setText(((Recipient) t[i]).toString());
+				} catch (Exception e) {}
 			}
 		} catch (RecipientException e) {
 
@@ -272,15 +278,20 @@ public class DonationMgmGui extends Application {
 		tempArr = donationMgm.managerArrayVolunteer();
 
 		for (int i = 0; i < tempArr.length; i++) {
+			// Alec M., 02-22-2020
+			try { 
 			volunteers[volunteers.length - 1 - i]
 					.setText(((Volunteer) tempArr[i]).toString());
+			} catch(Exception e) { }
 		}
 		tempArr = donationMgm.managerArrayRecipient();
 
 		for (int i = 0; i < tempArr.length; i++) {
-
+			// Alec M., 02-22-2020
+			try { 
 			recipients[recipients.length - 1 - i]
 					.setText(((Recipient) tempArr[i]).toString());
+			} catch(Exception e) {}
 		}
 	}
 

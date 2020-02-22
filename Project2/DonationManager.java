@@ -63,9 +63,15 @@ public class DonationManager implements DonationManageInterface {
 		if (this.rline.recipientLineEmpty()) {
 			throw new RecipientException("Recipient Queue is empty");
 		}
+		if (this.container.removePackageFromContainer() != null) {
+			this.vline.addNewVolunteer(this.vline.volunteerTurn());
+			this.rline.recipientTurn();
+		} else {
+			throw new ContainerException("Container is empty");
+		}
 		
-		// Return
-		return this.container.removePackageFromContainer() != null ? 1 : 0;
+		// Default
+		return 1;
 	}
 
 	@Override
@@ -86,7 +92,12 @@ public class DonationManager implements DonationManageInterface {
 		return this.rline.toArrayRecipient();
 	}
 	
+	/**
+	 * Create a stringified version of class
+	 * 
+	 * @return String last donation
+	 */
 	public String toString() {
-		return "stringified ?";
+		return "Donated package " + this.container.toString();
 	}
 }

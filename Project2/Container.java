@@ -6,6 +6,7 @@
 public class Container implements ContainerInterface {
 	// Variables
 	private MyStack<DonationPackage> packages;
+	private String lastDonation = "";
 	
 	/**
 	 * Constructor method
@@ -61,6 +62,7 @@ public class Container implements ContainerInterface {
 		}
 		
 		// Return
+		this.lastDonation = pkg.toString();
 		return pkg;
 	}
 	
@@ -83,5 +85,14 @@ public class Container implements ContainerInterface {
 		
 		// Return
 		return newA;
+	}
+	
+	/**
+	 * Create a stringified version of class
+	 * 
+	 * @return String last donation
+	 */
+	public String toString() {
+		return this.lastDonation;
 	}
 }

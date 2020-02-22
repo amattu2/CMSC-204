@@ -88,7 +88,7 @@ public class RecipientLine implements RecipientLineInterface {
 		
 		// Loops
 		for (Object recipient : oldA) {
-			if (recipient == null) { System.out.println(i + " was empty"); continue; }
+			if (recipient == null) { continue; }
 			
 			newA[i++] = (Recipient) recipient;
 		}
