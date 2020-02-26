@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.ListIterator;
 
 /**
+ * this is NOT being implemented for this project.
+ * 
  * @author Alec M.
  * @date 02/26/2020
  * @version 0.01a
