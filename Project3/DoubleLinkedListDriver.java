@@ -38,7 +38,7 @@ public class DoubleLinkedListDriver extends Application {
 	private Button getFirst, getLast, remove,startIterator, next, prev, hasNext, hasPrev;
 	private Alert alert = new Alert(AlertType.INFORMATION);
 	private Alert alertUser = new Alert(AlertType.INFORMATION);
-	private BasicDoubleLinkedList<String> basic;
+	private BasicCircularLinkedList<String> basic;
 	private SortedDoubleLinkedList<String> sorted;
 	private StringComparator sComp;
 	private TextArea basicArea, sortedArea, basicIterArea, sortedIterArea;
@@ -299,7 +299,7 @@ public class DoubleLinkedListDriver extends Application {
 	public void start(Stage stage) {
 		
 		sComp = new StringComparator();
-		basic = new BasicDoubleLinkedList<String>();
+		basic = new BasicCircularLinkedList<String>();
 		sorted = new SortedDoubleLinkedList<String>(sComp);
 		
 		//everything is displayed in an alert

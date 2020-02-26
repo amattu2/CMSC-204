@@ -52,4 +52,9 @@ public class SortedDoubleLinkedList<T> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public void addToEnd(String string) {
+		// TODO Auto-generated method stub
+		
+	}
 }

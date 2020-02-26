@@ -12,19 +12,9 @@ import java.util.ListIterator;
  */
 public class BasicDoubleLinkedList<T> {
 
-	public void addToFront(String newElement) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public ArrayList<String> toArrayList() {
+	public ArrayList<T> toArrayList() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	public void addToEnd(String newElement) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public String retrieveFirstElement() {
@@ -47,12 +37,25 @@ public class BasicDoubleLinkedList<T> {
 		return null;
 	}
 
-	public <StringComparator> void remove(String newElement, StringComparator sComp) {
+	public <StringComparator> void remove(T newElement, Comparator<T> sComp) {
 		throw new UnsupportedOperationException("Not supported");
 	}
 
-	public ListIterator<String> iterator() {
+	public ListIterator<T> iterator() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void addToEnd(T d) {
+		// TODO Auto-generated method stub
+	}
+
+	public void addToFront(T d) {
+		
+	}
+	
+	public int getSize() {
+		// TODO Auto-generated method stub
+		return 1;
 	}
 }
