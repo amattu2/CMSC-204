@@ -38,9 +38,15 @@ public class BasicCircularLinkedList<T> {
 		}
 	}
 	
+	/**
+	 * Add new node to front of list
+	 * We can just use this.add because it adds it to the front anyway
+	 * 
+	 * @param T data
+	 * @throws None
+	 */
 	public void addToFront(T data) {
-		// TODO Auto-generated method stub
-		
+		this.add(data);
 	}
 
 	public void addToEnd(T data) {
@@ -101,7 +107,7 @@ public class BasicCircularLinkedList<T> {
 	 * @throws None
 	 */
 	public ListIterator<T> iterator() {
-		return new Iterator();
+		return new Iterator(head);
 	}
 	
 	/**
@@ -154,12 +160,35 @@ public class BasicCircularLinkedList<T> {
 		public T getData() {
 			return this.data;
 		}
+		
+		/**
+		 * Get next node
+		 * 
+		 * @return Node next
+		 * @throws None
+		 */
+		public Node getNext() {
+			return this.next;
+		}
 	}
 
+	/**
+	 * A data iterator implementation of ListIterator
+	 * 
+	 * @author Alec M
+	 * @date 02/26/2020
+	 */
 	private class Iterator implements ListIterator<T> {
+		// Variables
+		private Node current;
+		
+		public Iterator(Node start) {
+			current = start;
+		}
+		
 		@Override
 		public boolean hasNext() {
-			return false;
+			return current != null;
 		}
 
 		@Override
@@ -169,7 +198,11 @@ public class BasicCircularLinkedList<T> {
 
 		@Override
 		public T next() {
-			return null;
+			// Variables
+			this.current = current.getNext();
+			
+			// Return
+			return this.current.getData();
 		}
 		
 		@Override
