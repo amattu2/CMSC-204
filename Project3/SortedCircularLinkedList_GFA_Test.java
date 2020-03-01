@@ -16,14 +16,14 @@ import org.junit.Test;
 
 
 
-public class SortedDoubleLinkedList_GFA_Test {
-	SortedDoubleLinkedList<String> sortedLinkedString;
+public class SortedCircularLinkedList_GFA_Test {
+	SortedCircularLinkedList<String> sortedLinkedString;
 	StringComparator comparator = new StringComparator();
 	
 
 	@Before
 	public void setUp() throws Exception {
-		sortedLinkedString = new SortedDoubleLinkedList<String>(comparator);
+		sortedLinkedString = new SortedCircularLinkedList<String>(comparator);
 	}
 
 	@After

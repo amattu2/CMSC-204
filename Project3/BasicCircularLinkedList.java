@@ -100,6 +100,11 @@ public class BasicCircularLinkedList<T> {
 		// TODO Auto-generated method stub
 	}
 	
+	public int getSize() {
+		// TODO Auto-generated method stub
+		return 0;
+	}	
+	
 	/**
 	 * Return list iterator
 	 * 
@@ -234,5 +239,5 @@ public class BasicCircularLinkedList<T> {
 		public void set(T e) {
 			throw new UnsupportedOperationException();
 		}
-	}	
+	}
 }

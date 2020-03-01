@@ -24,7 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
  
-public class DoubleLinkedListDriver extends Application {
+public class CircularLinkedListDriver extends Application {
 
 	private TextField newElementField, retrievedElementField, getElementField;
 	private TextField removeField,iteratorField;
@@ -39,7 +39,7 @@ public class DoubleLinkedListDriver extends Application {
 	private Alert alert = new Alert(AlertType.INFORMATION);
 	private Alert alertUser = new Alert(AlertType.INFORMATION);
 	private BasicCircularLinkedList<String> basic;
-	private SortedDoubleLinkedList<String> sorted;
+	private SortedCircularLinkedList<String> sorted;
 	private StringComparator sComp;
 	private TextArea basicArea, sortedArea, basicIterArea, sortedIterArea;
 	private ListIterator<String> basicIter, sortedIter;
@@ -300,7 +300,7 @@ public class DoubleLinkedListDriver extends Application {
 		
 		sComp = new StringComparator();
 		basic = new BasicCircularLinkedList<String>();
-		sorted = new SortedDoubleLinkedList<String>(sComp);
+		sorted = new SortedCircularLinkedList<String>(sComp);
 		
 		//everything is displayed in an alert
 		alert.setTitle("Doubly Linked List Manager");

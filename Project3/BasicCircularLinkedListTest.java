@@ -13,10 +13,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-public class BasicDoubleLinkedListTest {
-	BasicDoubleLinkedList<String> linkedString;
-	BasicDoubleLinkedList<Double> linkedDouble;
-	BasicDoubleLinkedList<Car> linkedCar;
+public class BasicCircularLinkedListTest {
+	BasicCircularLinkedList<String> linkedString;
+	BasicCircularLinkedList<Double> linkedDouble;
+	BasicCircularLinkedList<Car> linkedCar;
 	StringComparator comparator;
 	DoubleComparator comparatorD;
 	CarComparator comparatorCar;
@@ -33,17 +33,17 @@ public class BasicDoubleLinkedListTest {
 
 	@Before
 	public void setUp() throws Exception {
-		linkedString = new BasicDoubleLinkedList<String>();
+		linkedString = new BasicCircularLinkedList<String>();
 		linkedString.addToEnd("Hello");
 		linkedString.addToEnd("World");
 		comparator = new StringComparator();
 		
-		linkedDouble = new BasicDoubleLinkedList<Double>();
+		linkedDouble = new BasicCircularLinkedList<Double>();
 		linkedDouble.addToEnd(15.0);
 		linkedDouble.addToEnd(100.0);
 		comparatorD = new DoubleComparator();
 		
-		linkedCar= new BasicDoubleLinkedList<Car>();
+		linkedCar= new BasicCircularLinkedList<Car>();
 		linkedCar.addToEnd(b);
 		linkedCar.addToEnd(c);
 		comparatorCar = new CarComparator();
