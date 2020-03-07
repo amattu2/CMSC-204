@@ -12,4 +12,8 @@ public class SortedCircularLinkedList<T> extends BasicCircularLinkedList<T> {
 	public SortedCircularLinkedList(Comparator<T> c) {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public void add(T data) {
+		
+	}
 }

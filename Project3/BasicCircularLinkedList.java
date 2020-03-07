@@ -17,23 +17,12 @@ public class BasicCircularLinkedList<T> {
 	private int size;
 	
 	/**
-	 * Add new data to list
-	 * We can just use this.addToFront since it's going to just be a duplicate of that
-	 * 
-	 * @param T data
-	 * @throws None
-	 */
-	public void add(T data) {
-		this.addToFront(data);
-	}
-	
-	/**
 	 * Add new node to front of list
 	 * 
 	 * @param T data
 	 * @throws None
 	 */
-	public void addToFront(T data) {
+	public BasicCircularLinkedList<T> addToFront(T data) {
 		// Variables
 		Node newNode = new Node(data);
 		this.size++;
@@ -48,6 +37,9 @@ public class BasicCircularLinkedList<T> {
 			this.tail = newNode;
 			this.tail.setNext(this.head);
 		}
+		
+		// Return
+		return this;
 	}
 
 	/**
@@ -56,7 +48,7 @@ public class BasicCircularLinkedList<T> {
 	 * @param T data
 	 * @throws None
 	 */
-	public void addToEnd(T data) {
+	public BasicCircularLinkedList<T> addToEnd(T data) {
 		// Variables
 		Node newNode = new Node(data);
 		this.size++;
@@ -71,6 +63,9 @@ public class BasicCircularLinkedList<T> {
 			this.tail = newNode;
 			this.tail.setNext(this.head);
 		}
+		
+		// Return
+		return this;
 	}
 	
 	/**
