@@ -1,10 +1,7 @@
-
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,7 +22,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
  
 public class CircularLinkedListDriver extends Application {
-
 	private TextField newElementField, retrievedElementField, getElementField;
 	private TextField removeField,iteratorField;
 	private String newElement;

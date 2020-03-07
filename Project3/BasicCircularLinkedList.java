@@ -18,40 +18,59 @@ public class BasicCircularLinkedList<T> {
 	
 	/**
 	 * Add new data to list
+	 * We can just use this.addToFront since it's going to just be a duplicate of that
 	 * 
 	 * @param T data
 	 * @throws None
 	 */
 	public void add(T data) {
+		this.addToFront(data);
+	}
+	
+	/**
+	 * Add new node to front of list
+	 * 
+	 * @param T data
+	 * @throws None
+	 */
+	public void addToFront(T data) {
 		// Variables
 		Node newNode = new Node(data);
+		this.size++;
 		
 		// Checks
 		if (head == null) {
 			this.head = newNode;
 			this.tail = newNode;
-			newNode.setNext(head);
+			newNode.setNext(this.head);
 		} else {
 			tail.setNext(newNode);
 			this.tail = newNode;
 			this.tail.setNext(this.head);
 		}
 	}
-	
+
 	/**
-	 * Add new node to front of list
-	 * We can just use this.add because it adds it to the front anyway
+	 * Add new node to end of list
 	 * 
 	 * @param T data
 	 * @throws None
 	 */
-	public void addToFront(T data) {
-		this.add(data);
-	}
-
 	public void addToEnd(T data) {
-		// TODO Auto-generated method stub
+		// Variables
+		Node newNode = new Node(data);
+		this.size++;
 		
+		// Checks
+		if (head == null) {
+			this.head = newNode;
+			this.tail = newNode;
+			newNode.setNext(this.head);
+		} else {
+			this.tail.setNext(newNode);
+			this.tail = newNode;
+			this.tail.setNext(this.head);
+		}
 	}
 	
 	/**
@@ -61,8 +80,20 @@ public class BasicCircularLinkedList<T> {
 	 * @throws None
 	 */
 	public T retrieveFirstElement() {
-		// TODO remove element on return
-		return this.head != null ? this.head.getData() : null;
+		// Checks
+		if (this.head != null) {
+			// Variables
+			Node element = this.head;
+			this.head = element.getNext();
+			this.tail.setNext(head);
+			this.size--;
+			
+			// Return
+			return element.getData();
+		}
+		
+		// Default
+		return null;
 	}
 	
 	/**
@@ -82,8 +113,36 @@ public class BasicCircularLinkedList<T> {
 	 * @throws None
 	 */
 	public T retrieveLastElement() {
-		// TODO remove element on return
-		return this.tail != null ? this.tail.getData() : null;
+		// Checks
+		if (this.tail == null && this.head == null) {
+			return null;
+		} else if (this.head.equals(this.tail)) {
+			// Variables
+			Node element = this.head;
+			this.size = 0;
+			this.head = null;
+			this.tail = null;
+			
+			// Return
+			return element.getData();
+		} else {
+			// Variables
+			Node element = this.tail;
+			Node secondLast = null;
+			Node current = this.head;
+			
+			// Loops
+			while (element.equals(current) == false) {
+				secondLast = current;
+				current = current.getNext();
+			}
+			
+			// Return
+			this.tail = secondLast;
+			this.tail.setNext(this.head);
+			this.size--;
+			return element.getData();
+		}
 	}
 
 	/**
@@ -96,13 +155,27 @@ public class BasicCircularLinkedList<T> {
 		return this.tail != null ? this.tail.getData() : null;
 	}
 
-	public void remove(T element, Comparator<T> comparator) {
-		// TODO Auto-generated method stub
+	/**
+	 * Remove the specified data from list
+	 * 
+	 * @param T data
+	 * @param Comparator data comparator
+	 * @return BasicCircularLinkedList this
+	 */
+	public BasicCircularLinkedList<T> remove(T data, Comparator<T> comparator) {
+		// TODO 
+		// Remove specified element from list, return self
+		return this;
 	}
 	
+	/**
+	 * Return monitored circular list size
+	 * 
+	 * @return Integer size
+	 * @throws None
+	 */
 	public int getSize() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.size;
 	}	
 	
 	/**
@@ -122,7 +195,25 @@ public class BasicCircularLinkedList<T> {
 	 * @throws None
 	 */
 	public ArrayList<T> toArrayList() {
-		return null;
+		// Variables
+		ArrayList<T> a = new ArrayList<T>();
+		Node head = this.head;
+		Node current = this.head;
+		int index = 0;
+		
+		// Loops
+		while (current != null) {
+			// Checks
+			if (index > 0 && head.equals(current)) { break; }
+
+			// Add Element, Continue
+			a.add(current.getData());
+			current = current.getNext();
+			index++;
+		}
+		
+		// Return
+		return a;
 	}
 	
 	/**
@@ -186,23 +277,29 @@ public class BasicCircularLinkedList<T> {
 	private class Iterator implements ListIterator<T> {
 		// Variables
 		private Node current;
+		private Node head;
 		
 		public Iterator(Node start) {
 			current = start;
+			head = start;
 		}
 		
 		@Override
 		public boolean hasNext() {
-			return current != null;
+			return this.current != null && this.current != this.head;
 		}
 
 		@Override
 		public boolean hasPrevious() {
+			// TODO implement this
 			return false;
 		}
 
 		@Override
 		public T next() {
+			// Checks
+			if (this.current == null || this.current == this.head) { return null; }
+			
 			// Variables
 			this.current = current.getNext();
 			
@@ -212,6 +309,7 @@ public class BasicCircularLinkedList<T> {
 		
 		@Override
 		public T previous() {
+			// TODO implement this
 			return null;
 		}
 
