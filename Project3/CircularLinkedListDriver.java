@@ -51,7 +51,6 @@ public class CircularLinkedListDriver extends Application {
 				newElement = newElementField.getText();
 				basic.addToFront(newElement);
 				result = basic.toArrayList();
-				System.out.println(result);
 				//print out the result
 				showLists("basic",result);
 			} 

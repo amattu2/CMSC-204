@@ -1,13 +1,14 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.ListIterator;
+import java.util.NoSuchElementException;
 
 /**
  * A basic unsorted CIRCULAR singly-linked implementation
  * 
  * @author Alec M.
  * @date 02/26/2020
- * @version 0.01a
+ * @version 0.011d
  */
 @SuppressWarnings("unused")
 public class BasicCircularLinkedList<T> {
@@ -158,8 +159,30 @@ public class BasicCircularLinkedList<T> {
 	 * @return BasicCircularLinkedList this
 	 */
 	public BasicCircularLinkedList<T> remove(T data, Comparator<T> comparator) {
-		// TODO 
-		// Remove specified element from list, return self
+		// Variables
+		Node previous = this.tail;
+		Node current = this.head;
+		Node next = this.head.getNext();
+		int index = 0;
+		
+		// Loops
+		while (current != null) {
+			// Checks
+			if (index > 0 && head.equals(current)) { break; }
+			if (comparator.compare(data, current.getData()) == 0) {
+				previous.setNext(next);
+				this.size--;
+				break;
+			}
+			
+			// Variables
+			previous = current;
+			current = current.getNext();
+			next = current.getNext();
+			index++;
+		}
+		
+		// Return
 		return this;
 	}
 	
@@ -293,7 +316,9 @@ public class BasicCircularLinkedList<T> {
 		@Override
 		public T next() {
 			// Checks
-			if (this.current == null || this.current == this.head) { return null; }
+			if (this.current == null || this.current == this.head) {
+				throw new NoSuchElementException("No further elements");
+			}
 			
 			// Variables
 			this.current = current.getNext();
