@@ -294,12 +294,14 @@ public class BasicCircularLinkedList<T> {
 	 */
 	private class Iterator implements ListIterator<T> {
 		// Variables
-		private Node current;
 		private Node head;
+		private Node current;
+		private Node previous;
 		
 		public Iterator(Node start) {
 			current = start;
 			head = start;
+			previous = null;
 		}
 		
 		@Override
@@ -309,8 +311,7 @@ public class BasicCircularLinkedList<T> {
 
 		@Override
 		public boolean hasPrevious() {
-			// TODO implement this
-			return false;
+			return this.previous != null;
 		}
 
 		@Override
@@ -329,8 +330,17 @@ public class BasicCircularLinkedList<T> {
 		
 		@Override
 		public T previous() {
-			// TODO implement this
-			return null;
+			// Checks
+			if (this.previous == null) {
+				throw new NoSuchElementException("No further elements");
+			}
+			
+			// Variables
+			this.current = this.previous;
+			this.previous = null;
+			
+			// Return
+			return this.current.getData();
 		}
 
 		@Override
