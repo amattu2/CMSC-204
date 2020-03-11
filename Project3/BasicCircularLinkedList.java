@@ -13,9 +13,9 @@ import java.util.NoSuchElementException;
 @SuppressWarnings("unused")
 public class BasicCircularLinkedList<T> {
 	// Variables
-	private Node head;
-	private Node tail;
-	private int size;
+	protected Node head;
+	protected Node tail;
+	protected int size;
 	
 	/**
 	 * Add new node to front of list
@@ -203,7 +203,7 @@ public class BasicCircularLinkedList<T> {
 	 * @throws None
 	 */
 	public ListIterator<T> iterator() {
-		return new Iterator(head);
+		return new Iterator(this.head);
 	}
 	
 	/**
@@ -240,7 +240,7 @@ public class BasicCircularLinkedList<T> {
 	 * @author Alec M
 	 * @date 02/26/2020
 	 */
-	private class Node {
+	protected class Node {
 		// Variables
 		private T data;
 		private Node next;
@@ -292,7 +292,7 @@ public class BasicCircularLinkedList<T> {
 	 * @author Alec M
 	 * @date 02/26/2020
 	 */
-	private class Iterator implements ListIterator<T> {
+	protected class Iterator implements ListIterator<T> {
 		// Variables
 		private Node head;
 		private Node current;
@@ -306,7 +306,7 @@ public class BasicCircularLinkedList<T> {
 		
 		@Override
 		public boolean hasNext() {
-			return this.current != null && this.current != this.head;
+			return this.current != null;
 		}
 
 		@Override
@@ -317,11 +317,12 @@ public class BasicCircularLinkedList<T> {
 		@Override
 		public T next() {
 			// Checks
-			if (this.current == null || this.current == this.head) {
+			if (this.current == null) {
 				throw new NoSuchElementException("No further elements");
 			}
 			
 			// Variables
+			this.previous = this.current;
 			this.current = current.getNext();
 			
 			// Return

@@ -53,6 +53,7 @@ public class CircularLinkedListDriver extends Application {
 				result = basic.toArrayList();
 				//print out the result
 				showLists("basic",result);
+				newElementField.setText(""); // Alec M. 3-11-2020
 			} 
 			//Add to end button (basic DLL)
 			else if (e.getSource() == addEnd) {
@@ -61,14 +62,16 @@ public class CircularLinkedListDriver extends Application {
 				result = basic.toArrayList();
 				//print out the result
 				showLists("basic",result);
+				newElementField.setText(""); // Alec M. 3-11-2020
 			} 
 			//Add button (sorted DLL)
 			else if (e.getSource() == add) {
-						newElement = newElementField.getText();
-						sorted.add(newElement);
-						result = sorted.toArrayList();
-						//print out the result
-						showLists("sorted",result);
+				newElement = newElementField.getText();
+				sorted.add(newElement);
+				result = sorted.toArrayList();
+				//print out the result
+				showLists("sorted",result);
+				newElementField.setText(""); // Alec M. 3-11-2020
 			} 
 			//Retrieve first button (deletes from list)
 			if (e.getSource() == retrieveFirst) {
