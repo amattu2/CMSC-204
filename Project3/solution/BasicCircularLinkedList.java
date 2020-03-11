@@ -1,3 +1,5 @@
+package solution;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.ListIterator;
@@ -35,7 +37,8 @@ public class BasicCircularLinkedList<T> {
 			newNode.setNext(this.head);
 		} else {
 			tail.setNext(newNode);
-			this.tail = newNode;
+			newNode.setNext(this.head);
+			this.head = newNode;			
 			this.tail.setNext(this.head);
 		}
 		
@@ -110,9 +113,10 @@ public class BasicCircularLinkedList<T> {
 	 */
 	public T retrieveLastElement() {
 		// Checks
-		if (this.tail == null && this.head == null) {
+		if (this.tail == null || this.head == null) {
 			return null;
-		} else if (this.head.equals(this.tail)) {
+		}
+		if (this.head.equals(this.tail)) {
 			// Variables
 			Node element = this.head;
 			this.size = 0;
@@ -124,18 +128,14 @@ public class BasicCircularLinkedList<T> {
 		} else {
 			// Variables
 			Node element = this.tail;
-			Node secondLast = null;
-			Node current = this.head;
+			Node next = this.head;
 			
-			// Loops
-			while (element.equals(current) == false) {
-				secondLast = current;
-				current = current.getNext();
+			while (!next.getNext().equals(element)) {
+				next = next.getNext();
 			}
-			
-			// Return
-			this.tail = secondLast;
-			this.tail.setNext(this.head);
+
+			System.out.println(next.equals(this.head));
+			next.setNext(this.head);
 			this.size--;
 			return element.getData();
 		}
@@ -284,6 +284,17 @@ public class BasicCircularLinkedList<T> {
 		public Node getNext() {
 			return this.next;
 		}
+		
+		/**
+		 * Stringify current data
+		 * 
+		 * @param None
+		 * @return String data
+		 * @throws None
+		 */
+		public String toString() {
+			return this.data.toString();
+		}
 	}
 
 	/**
@@ -297,11 +308,13 @@ public class BasicCircularLinkedList<T> {
 		private Node head;
 		private Node current;
 		private Node previous;
+		private int index;
 		
 		public Iterator(Node start) {
 			current = start;
 			head = start;
 			previous = null;
+			index = 0;
 		}
 		
 		@Override
@@ -317,30 +330,40 @@ public class BasicCircularLinkedList<T> {
 		@Override
 		public T next() {
 			// Checks
-			if (this.current == null) {
+			if (this.current == null || (index > 0 && this.current.equals(this.head))) {
 				throw new NoSuchElementException("No further elements");
 			}
 			
 			// Variables
 			this.previous = this.current;
 			this.current = current.getNext();
+			this.index++;
 			
 			// Return
-			return this.current.getData();
+			return this.previous.getData();
 		}
 		
 		@Override
 		public T previous() {
+			// Variables
+			Node truePrevious = null;
+			Node next = this.head;
+			
 			// Checks
 			if (this.previous == null) {
-				throw new NoSuchElementException("No further elements");
+				throw new NoSuchElementException("No previous elements");
+			}
+			if (!this.previous.equals(this.head)) {						
+				while (!next.getNext().equals(this.previous)) {
+					next = next.getNext();
+				}
+				
+				truePrevious = next;
 			}
 			
-			// Variables
-			this.current = this.previous;
-			this.previous = null;
-			
 			// Return
+			this.current = this.previous;
+			this.previous = truePrevious;
 			return this.current.getData();
 		}
 

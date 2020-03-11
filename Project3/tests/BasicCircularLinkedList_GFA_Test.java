@@ -1,3 +1,5 @@
+package tests;
+
 import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -7,6 +9,8 @@ import java.util.NoSuchElementException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import solution.BasicCircularLinkedList;
 
 public class BasicCircularLinkedList_GFA_Test {
 	BasicCircularLinkedList<String> linkedString;
