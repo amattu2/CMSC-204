@@ -261,7 +261,6 @@ public class BasicCircularLinkedListTest {
 		linkedCar.addToEnd(d);
 		assertEquals(d, linkedCar.getLast());
 		linkedCar.remove(d, comparatorCar);
-		/*
 		assertEquals(c, linkedCar.retrieveLastElement());
 		//remove from middle of list
 		linkedCar.addToFront(a);
@@ -270,7 +269,6 @@ public class BasicCircularLinkedListTest {
 		linkedCar.remove(b, comparatorCar);
 		assertEquals(a, linkedCar.getFirst());
 		assertEquals(c, linkedCar.getLast());
-		*/
 	}
 
 	@Test
@@ -299,13 +297,10 @@ public class BasicCircularLinkedListTest {
 		linkedCar.addToEnd(d);
 		assertEquals(d, linkedCar.getLast());
 		assertEquals(d, linkedCar.retrieveLastElement());
-		assertEquals(c, linkedCar.retrieveLastElement());
-		
 		assertEquals("World", linkedString.getLast());
 		linkedString.addToEnd("New");
 		assertEquals("New", linkedString.getLast());
 		assertEquals("New", linkedString.retrieveLastElement());
-		assertEquals("World",linkedString.getLast());
 	}
 
 	private class StringComparator implements Comparator<String>

@@ -1,5 +1,7 @@
+// Packages
 package solution;
 
+// Imports
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.ListIterator;
@@ -9,8 +11,8 @@ import java.util.NoSuchElementException;
  * A basic unsorted CIRCULAR singly-linked implementation
  * 
  * @author Alec M.
- * @date 02/26/2020
- * @version 0.011d
+ * @date 03/12/2020
+ * @version 1.00a
  */
 @SuppressWarnings("unused")
 public class BasicCircularLinkedList<T> {
@@ -133,8 +135,7 @@ public class BasicCircularLinkedList<T> {
 			while (!next.getNext().equals(element)) {
 				next = next.getNext();
 			}
-
-			System.out.println(next.equals(this.head));
+			
 			next.setNext(this.head);
 			this.size--;
 			return element.getData();
@@ -159,6 +160,28 @@ public class BasicCircularLinkedList<T> {
 	 * @return BasicCircularLinkedList this
 	 */
 	public BasicCircularLinkedList<T> remove(T data, Comparator<T> comparator) {
+		// Checks
+		if (this.head == null || this.tail == null || this.size == 0) { 
+			return this;
+		}
+		
+		// Variables
+		Node previous = this.tail;
+		Node current = this.head;
+		
+		// Loops
+		while (comparator.compare(data, current.getData()) != 0 && (previous != null && previous.equals(this.tail) == false)) {
+			previous = current;
+			current = current.getNext();
+		}
+		
+		previous.setNext(current.getNext());
+		this.size--;
+		
+		// TODO
+		System.out.println(">> Ended remove");
+		
+		/*
 		// Variables
 		Node previous = this.tail;
 		Node current = this.head;
@@ -180,7 +203,11 @@ public class BasicCircularLinkedList<T> {
 			current = current.getNext();
 			next = current.getNext();
 			index++;
+			
+			// TODO
+			System.out.println("Continuing");
 		}
+		*/
 		
 		// Return
 		return this;
@@ -213,22 +240,33 @@ public class BasicCircularLinkedList<T> {
 	 * @throws None
 	 */
 	public ArrayList<T> toArrayList() {
+		// TODO
+		System.out.println(">> Started toArrayList");
+		
 		// Variables
 		ArrayList<T> a = new ArrayList<T>();
 		Node head = this.head;
 		Node current = this.head;
 		int index = 0;
 		
-		// Loops
-		while (current != null) {
-			// Checks
-			if (index > 0 && head.equals(current)) { break; }
-
-			// Add Element, Continue
-			a.add(current.getData());
-			current = current.getNext();
-			index++;
+		// Checks
+		if (this.head != null && this.head.equals(this.tail)) {
+			a.add(this.head.getData());
+		} else if (this.head != null) {
+			// Loops
+			while (current != null) {
+				// Checks
+				if (index > 0 && head.equals(current)) { break; }
+	
+				// Add Element, Continue
+				a.add(current.getData());
+				current = current.getNext();
+				index++;
+			}
 		}
+		
+		// TODO
+		System.out.println(">> Ended toArrayList" + a);
 		
 		// Return
 		return a;

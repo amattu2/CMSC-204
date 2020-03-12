@@ -1,4 +1,6 @@
+// Package
 package solution;
+
 // Imports
 import java.util.Comparator;
 import java.util.ListIterator;
@@ -12,7 +14,7 @@ import java.util.ListIterator;
  */
 public class SortedCircularLinkedList<T> extends BasicCircularLinkedList<T> {
 	// Variables
-	private Comparator<T> comparator = null;
+	protected Comparator<T> comparator = null;
 	
 	public SortedCircularLinkedList(Comparator<T> c) {
 		this.comparator = c;
@@ -20,10 +22,12 @@ public class SortedCircularLinkedList<T> extends BasicCircularLinkedList<T> {
 	
 	public SortedCircularLinkedList<T> add(T value) {
 		// Checks
-		if (this.size == 0) {
-			this.head = new Node(value);
-			this.tail = this.head;
+		if (this.head == null || this.tail == null) {
+			Node newNode = new Node(value);
+			this.head = newNode;
+			this.tail = newNode;
 			this.head.setNext(this.tail);
+			this.tail.setNext(this.head);
 			this.size++;	
 			return this;
 		}
