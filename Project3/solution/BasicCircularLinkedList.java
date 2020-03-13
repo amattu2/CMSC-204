@@ -11,8 +11,8 @@ import java.util.NoSuchElementException;
  * A basic unsorted CIRCULAR singly-linked implementation
  * 
  * @author Alec M.
- * @date 03/12/2020
- * @version 1.00a
+ * @date 03/13/2020
+ * @version 1.01a
  */
 @SuppressWarnings("unused")
 public class BasicCircularLinkedList<T> {
@@ -160,32 +160,10 @@ public class BasicCircularLinkedList<T> {
 	 * @return BasicCircularLinkedList this
 	 */
 	public BasicCircularLinkedList<T> remove(T data, Comparator<T> comparator) {
-		// Checks
-		if (this.head == null || this.tail == null || this.size == 0) { 
-			return this;
-		}
-		
 		// Variables
 		Node previous = this.tail;
 		Node current = this.head;
-		
-		// Loops
-		while (comparator.compare(data, current.getData()) != 0 && (previous != null && previous.equals(this.tail) == false)) {
-			previous = current;
-			current = current.getNext();
-		}
-		
-		previous.setNext(current.getNext());
-		this.size--;
-		
-		// TODO
-		System.out.println(">> Ended remove");
-		
-		/*
-		// Variables
-		Node previous = this.tail;
-		Node current = this.head;
-		Node next = this.head.getNext();
+		Node next = null;
 		int index = 0;
 		
 		// Loops
@@ -193,21 +171,26 @@ public class BasicCircularLinkedList<T> {
 			// Checks
 			if (index > 0 && head.equals(current)) { break; }
 			if (comparator.compare(data, current.getData()) == 0) {
+				if (current.equals(this.head) && this.size > 1) {
+					this.head = current.getNext();
+				} else if (current.equals(this.tail) && this.size > 1) {
+					this.tail = previous;
+				} else if (current.equals(this.head) && current.equals(this.tail)) {
+					this.head = null;
+					this.tail = null;
+				}
+				
 				previous.setNext(next);
-				this.size--;
+				this.size = this.size <= 0 ? 0 : this.size - 1;
 				break;
 			}
 			
 			// Variables
 			previous = current;
 			current = current.getNext();
-			next = current.getNext();
+			next = current != null ? current.getNext() : null;
 			index++;
-			
-			// TODO
-			System.out.println("Continuing");
 		}
-		*/
 		
 		// Return
 		return this;
@@ -239,34 +222,23 @@ public class BasicCircularLinkedList<T> {
 	 * @return ArrayList<T> arraylist
 	 * @throws None
 	 */
-	public ArrayList<T> toArrayList() {
-		// TODO
-		System.out.println(">> Started toArrayList");
-		
+	public ArrayList<T> toArrayList() {		
 		// Variables
 		ArrayList<T> a = new ArrayList<T>();
 		Node head = this.head;
 		Node current = this.head;
 		int index = 0;
 		
-		// Checks
-		if (this.head != null && this.head.equals(this.tail)) {
-			a.add(this.head.getData());
-		} else if (this.head != null) {
-			// Loops
-			while (current != null) {
-				// Checks
-				if (index > 0 && head.equals(current)) { break; }
-	
-				// Add Element, Continue
-				a.add(current.getData());
-				current = current.getNext();
-				index++;
-			}
-		}
-		
-		// TODO
-		System.out.println(">> Ended toArrayList" + a);
+		// Loops
+		do {
+			// Checks
+			if (current == null || head == null) { break; }
+			if (index++ > this.size + 1) { break; }
+			
+			// Add Element, Continue
+			a.add(current.getData());
+			current = current.getNext();
+		} while (current != null && !current.equals(head));
 		
 		// Return
 		return a;

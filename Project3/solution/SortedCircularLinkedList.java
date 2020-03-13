@@ -9,8 +9,8 @@ import java.util.ListIterator;
  * A CIRCULAR singly-linked implementation
  * 
  * @author Alec M.
- * @date 03/11/2020
- * @version 0.03a
+ * @date 03/13/2020
+ * @version 0.04a
  */
 public class SortedCircularLinkedList<T> extends BasicCircularLinkedList<T> {
 	// Variables
@@ -20,52 +20,13 @@ public class SortedCircularLinkedList<T> extends BasicCircularLinkedList<T> {
 		this.comparator = c;
 	}
 	
-	public SortedCircularLinkedList<T> add(T value) {
-		// Checks
-		if (this.head == null || this.tail == null) {
-			Node newNode = new Node(value);
-			this.head = newNode;
-			this.tail = newNode;
-			this.head.setNext(this.tail);
-			this.tail.setNext(this.head);
-			this.size++;	
-			return this;
-		}
-		if (this.comparator.compare(value, this.head.getData()) < 0) {
-			System.out.println("issue at 30");
-			Node newNode = new Node(value);
-			this.head = newNode;
-			this.tail.setNext(this.head);
-			this.size++;
-			return this;
-		} else {
-			Node previous = null;
-			Node current = head.getNext();
-			
-			while (current != null) {
-				if (this.comparator.compare(value, current.getData()) <= 0) {
-					System.out.println("issue at 42");
-					Node newNode = new Node(value);
-					current.setNext(newNode);
-					newNode.setNext(current.getNext());
-					this.size++;
-					return this;
-				}
-				
-				previous = current;
-				current = current.getNext();
-			}
-
-			// add to tail
-			Node newNode = new Node(value);
-			this.tail.setNext(newNode);
-			this.tail = newNode;
-			this.tail.setNext(this.head);
-			this.size++;
-			return this;
-		}
-	}
-	/*
+	/**
+	 * Add element to node list in appropriate position
+	 * 
+	 * @param T data
+	 * @return SortedCircularLinkedList<T> this
+	 * @throws None
+	 */
 	public SortedCircularLinkedList<T> add(T data) {
 		// Variables
 		Node newNode = new Node(data);
@@ -116,7 +77,6 @@ public class SortedCircularLinkedList<T> extends BasicCircularLinkedList<T> {
 		// Return
 		return this;
 	}
-	*/
 	
 	public SortedCircularLinkedList<T> remove(T d, Comparator<T> c) {
 		super.remove(d, c);
