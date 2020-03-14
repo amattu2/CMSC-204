@@ -87,7 +87,7 @@ public class BasicCircularLinkedList<T> {
 			Node element = this.head;
 			this.head = element.getNext();
 			this.tail.setNext(head);
-			this.size--;
+			this.size = this.size <= 0 ? 0 : this.size - 1;
 			
 			// Return
 			return element.getData();
@@ -130,14 +130,18 @@ public class BasicCircularLinkedList<T> {
 		} else {
 			// Variables
 			Node element = this.tail;
-			Node next = this.head;
+			Node previous = this.tail;
+			Node current = this.head;
 			
-			while (!next.getNext().equals(element)) {
-				next = next.getNext();
+			// Loops
+			while (current != element) {
+				previous = current;
+				current = current.getNext();
 			}
 			
-			next.setNext(this.head);
-			this.size--;
+			previous.setNext(this.head);
+			this.tail = previous;
+			this.size = this.size <= 0 ? 0 : this.size - 1;
 			return element.getData();
 		}
 	}

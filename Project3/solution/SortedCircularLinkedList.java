@@ -16,7 +16,15 @@ public class SortedCircularLinkedList<T> extends BasicCircularLinkedList<T> {
 	// Variables
 	protected Comparator<T> comparator = null;
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param Comparator<T> comparator
+	 * @throws None
+	 */
 	public SortedCircularLinkedList(Comparator<T> c) {
+		this.head = null;
+		this.tail = null;
 		this.comparator = c;
 	}
 	
@@ -29,49 +37,39 @@ public class SortedCircularLinkedList<T> extends BasicCircularLinkedList<T> {
 	 */
 	public SortedCircularLinkedList<T> add(T data) {
 		// Variables
+		Node previous = this.tail;
+		Node current = this.head;
+		Node next = this.head != null ? this.head.getNext() : null;
 		Node newNode = new Node(data);
 		
 		// Checks
-		if (this.head == null) {
-			this.head = newNode;
-			this.tail = newNode;
+		if (current == null) { // Nothing to compare
+
+			this.head = newNode; // set head as newNode
+			newNode.setNext(this.head); // set next as head
+			this.tail = this.head; // set tail as newNode
 			this.size++;
-			this.head.setNext(this.tail);
-		} else {
-			// Variables
-			Node previous = this.tail;
-			Node current = this.head;
-			Node next = null; 
-			int index = 0;
-					
-			// Loops
-			while (current != null) {
-				// Variables
-				int result = this.comparator.compare(data, current.getData());
-				int end = 0;
-				
-				System.out.println("Comparing: " + data + " to " + current.getData() + ". "+ result);
-				
-				// Checks
-				if (index > 0 && this.head.equals(current)) { end = 1; }
-				if (result == -1) {
-					previous.setNext(newNode);
-					newNode.setNext(current);
-					this.size++;
-					break;
-				} else if (result == 0 || end == 1) {
-					current.setNext(newNode);
-					newNode.setNext(next);
-					this.size++;
-					break;
-				}
-				
-				// Variables
+		} else if (this.comparator.compare(current.getData(), data) >= 0) { // data > head.data
+			this.head = newNode; // set head as newNode 
+			this.head.setNext(current); // set newNode next as old head
+			this.tail.setNext(this.head); // set tail next as newNode
+			this.size++;
+		} else if (this.comparator.compare(previous.getData(), data) <= -1) { // data < tail.data
+			this.tail.setNext(newNode);
+			this.tail = newNode;
+			this.tail.setNext(this.head);
+			this.size++;
+		} else { // data < head.data
+			while (current != null && this.comparator.compare(current.getData(), data) < 0) {
 				previous = current;
-				current = current.getNext();
-				next = current.getNext();
-				index++;
+				current = current.getNext() != this.head ? current.getNext() : null; //current.getNext();
+				next = current != null ? current.getNext() : null; //current.getNext() != this.head ? current.getNext() : null;
 			}
+
+			this.tail = previous == this.tail ? newNode : this.tail;
+			previous.setNext(newNode);
+			newNode.setNext(current == null ? this.head : current);		
+			this.size++;
 		}
 
 		// Return
