@@ -10,44 +10,69 @@ import java.util.NoSuchElementException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import solution.BasicCircularLinkedList;
+import solution.SortedCircularLinkedList;
 
 /**
  * BasicCircularLinkedList Test Cases
  * 
  * @author Alec M.
- * @date 3/13/2020
+ * @date 3/15/2020
  */
 public class SortedCircularLinkedList_STUDENT {
 	// Variables
-	BasicCircularLinkedList<String> str;
-	BasicCircularLinkedList<Double> dbl;
-	StringComparator comparator;
+	SortedCircularLinkedList<String> str;
 
 	@Before
 	public void setUp() throws Exception {
 		// Variables
-		str = new BasicCircularLinkedList<String>();
-		dbl = new BasicCircularLinkedList<Double>();
-		comparator = new StringComparator();
-		
-		// Add Values
-		str.addToEnd("Alec");
-		str.addToFront("K");
-		str.addToEnd("M.");
-		dbl.addToFront(99.0);
-		dbl.addToEnd(7.0);
-		dbl.addToFront(1.0);
-		dbl.addToEnd(3.0);
+		str = new SortedCircularLinkedList<String>(new StringComparator());
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		str = null;
-		dbl = null;
-		comparator = null;
 	}
 
+	@Test
+	public void testAddToFrontThrowsException() {
+		try {
+			str.addToFront("Should fail");
+			assertTrue("Did not throw exception", false);
+		} catch (UnsupportedOperationException e) {
+			assertTrue("Threw exception", true);
+		} catch (Exception e) {
+			assertTrue("Threw other exception", false);
+		}
+	}
+	
+	@Test
+	public void testAddToEndThrowsException() {
+		try {
+			str.addToEnd("Should fail");
+			assertTrue("Did not throw exception", false);
+		} catch (UnsupportedOperationException e) {
+			assertTrue("Threw exception", true);
+		} catch (Exception e) {
+			assertTrue("Threw other exception", false);
+		}
+	}
+	
+	@Test
+	public void testAdd() {
+		str.add("b");
+		assertEquals(str.getFirst(), "b");
+		str.add("a");
+		assertEquals(str.getFirst(), "a");
+		str.add("1b");
+		assertEquals(str.getFirst(), "1b");
+		str.add("z");
+		assertEquals(str.getLast(), "z");
+		str.add("1A");
+		assertEquals(str.getFirst(), "1A");
+		str.add("zz");
+		assertEquals(str.getLast(), "zz");
+	}
+	
 	private class StringComparator implements Comparator<String> {
 		@Override
 		public int compare(String arg0, String arg1) {

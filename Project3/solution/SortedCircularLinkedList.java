@@ -39,12 +39,10 @@ public class SortedCircularLinkedList<T> extends BasicCircularLinkedList<T> {
 		// Variables
 		Node previous = this.tail;
 		Node current = this.head;
-		Node next = this.head != null ? this.head.getNext() : null;
 		Node newNode = new Node(data);
 		
 		// Checks
 		if (current == null) { // Nothing to compare
-
 			this.head = newNode; // set head as newNode
 			newNode.setNext(this.head); // set next as head
 			this.tail = this.head; // set tail as newNode
@@ -63,7 +61,6 @@ public class SortedCircularLinkedList<T> extends BasicCircularLinkedList<T> {
 			while (current != null && this.comparator.compare(current.getData(), data) < 0) {
 				previous = current;
 				current = current.getNext() != this.head ? current.getNext() : null; //current.getNext();
-				next = current != null ? current.getNext() : null; //current.getNext() != this.head ? current.getNext() : null;
 			}
 
 			this.tail = previous == this.tail ? newNode : this.tail;
@@ -82,15 +79,18 @@ public class SortedCircularLinkedList<T> extends BasicCircularLinkedList<T> {
 		return this;
 	}
 	
+	@Override
 	public ListIterator<T> iterator() {
 		return super.iterator();
 	}
 	
-	public BasicCircularLinkedList<T> addToEnd() {
-		throw new UnsupportedOperationException("Not supported");
-	}
-	
-	public BasicCircularLinkedList<T> addToFront() {
-		throw new UnsupportedOperationException("Not supported");
+	@Override
+	public BasicCircularLinkedList<T> addToFront(T data) {
+		throw new UnsupportedOperationException("Invalid operation for sorted list");
 	}	
+	
+	@Override
+	public BasicCircularLinkedList<T> addToEnd(T data) {
+		throw new UnsupportedOperationException("Invalid operation for sorted list");
+	}
 }
