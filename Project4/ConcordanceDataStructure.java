@@ -1,12 +1,24 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ConcordanceDataStructure implements ConcordanceDataStructureInterface {
 
-	public ConcordanceDataStructure(int i) {
-		// TODO Auto-generated constructor stub
+	public int getTableSize() {
+		return 0;
+	}
+	   
+	public ArrayList<String> getWords(int index) {
+		return null;
+	}
+	   
+	public ArrayList<LinkedList<Integer>> getPageNumbers(int index) {
+		return null;
 	}
 
-	public ConcordanceDataStructure(String string, int i) {
-		// TODO Auto-generated constructor stub
-	}
+	public void add(String word, int lineNum) {
+	} 
 
+	public ArrayList<String> showAll() {
+		return null;
+	}
 }
