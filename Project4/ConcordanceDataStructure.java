@@ -1,5 +1,3 @@
-import java.util.Collections;
-
 /**
  * A ConcordanceDataStructure implementation
  * 
