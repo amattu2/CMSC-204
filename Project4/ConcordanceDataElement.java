@@ -6,10 +6,10 @@
  * @version 0.01
  * @see ConcordanceDataElement(4).html
  */
-public class ConcordanceDataElement {
+public class ConcordanceDataElement implements java.lang.Comparable<ConcordanceDataElement> {
 	// Class Variables
-	private String word;
-	private java.util.LinkedList<Integer> lines;
+	protected String word;
+	protected java.util.LinkedList<Integer> lines;
 	
 	/**
 	 * Standard constructor
