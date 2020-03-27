@@ -1,6 +1,4 @@
-// Imports
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Collections;
 
 /**
  * A ConcordanceDataStructure implementation
@@ -11,31 +9,93 @@ import java.util.LinkedList;
  * @see ConcordanceDataStructure(3).html
  */
 public class ConcordanceDataStructure implements ConcordanceDataStructureInterface {
-
-	public ConcordanceDataStructure(String string, int i) {
-		// TODO Auto-generated constructor stub
+	// Class Variables
+    private java.util.Hashtable<Integer, ConcordanceDataElement> table; 
+    private int size = 0; 
+    private final double factor = 1.5; 
+    
+    /**
+     * Class Constructor
+     * 
+     * @param String words
+     * @param Integer size
+     * @throws None
+     */
+	public ConcordanceDataStructure(String w, int s) {
+		// TODO Calculate size, add words
+		table = new java.util.Hashtable<Integer, ConcordanceDataElement>();
 	}
 
-	public ConcordanceDataStructure(int i) {
-		// TODO Auto-generated constructor stub
-	}
+	/**
+	 * Class Constructor
+	 * 
+     * @param Integer size
+     * @throws None
+	 */
+	public ConcordanceDataStructure(int s) {
+		// TODO Calculate size
+		table = new java.util.Hashtable<Integer, ConcordanceDataElement>();
+	}	 
 
-	public int getTableSize() {
-		return 0;
-	}
-	   
-	public ArrayList<String> getWords(int index) {
-		return null;
-	}
-	   
-	public ArrayList<LinkedList<Integer>> getPageNumbers(int index) {
-		return null;
-	}
+	/**
+	 * Add New Word
+	 * 
+	 * We don't need to address the capitalization of the word because ConcordanceDataElement
+	 * already handles that internally.
+	 * 
+	 * @param String word
+	 * @param Integer line
+	 * @throws None
+	 */
+	public void add(String w, int l) {
+		// Variables
+		ConcordanceDataElement element = new ConcordanceDataElement(w);
 
-	public void add(String word, int lineNum) {
+		// Checks
+		if (this.table.containsKey(element.hashCode()) == true) {
+			this.table.get(element.hashCode()).addPage(l);
+			return;
+		} else {
+			this.table.put(element.hashCode(), element);
+			return;
+		}
 	} 
 
-	public ArrayList<String> showAll() {
+	/**
+	 * Display All Elements
+	 * 
+	 * @param None
+	 * @return String elements (name: pg, pg, pg)
+	 * @throws None
+	 */
+	public java.util.ArrayList<String> showAll() {
+		// TODO Sort then convert to string, then return
+		
+		// Variables
+		java.util.ArrayList<ConcordanceDataElement> unsortedList = new java.util.ArrayList<ConcordanceDataElement>(this.table.values());
+		
+		// Return
+		return new java.util.ArrayList<String>();
+	}
+	
+	/**
+	 * Get Size Of Table
+	 * 
+	 * @param None
+	 * @return Integer table size
+	 * @throws None
+	 */
+	public int getTableSize() {
+		return this.size;
+	}
+	
+	public java.util.ArrayList<String> getWords(int index) {
+		// TODO
 		return null;
 	}
+	   
+	public java.util.ArrayList<java.util.LinkedList<Integer>> getPageNumbers(int index) {
+		// TODO
+		return null;
+	}	
 }

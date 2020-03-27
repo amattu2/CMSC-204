@@ -40,6 +40,10 @@ public class ConcordanceDataElement {
 	 * @throws None
 	 */
 	public void addLine(int l) {
+		// Checks
+		if (this.lines.indexOf(l) >= 0) { return; }
+		
+		// Add
 		this.lines.add(l);
 	}
 	
@@ -95,6 +99,6 @@ public class ConcordanceDataElement {
 	 * @throws None
 	 */
 	public int compareTo(ConcordanceDataElement e1) {
-		return 0; // TODO
+		return e1.getWord().compareTo(this.getWord());
 	}
 }
