@@ -3,14 +3,16 @@
  * 
  * @author Alec M.
  * @date 03/26/2020
- * @version 0.01
+ * @version 0.04
  * @see ConcordanceDataStructure(3).html
  */
 public class ConcordanceDataStructure implements ConcordanceDataStructureInterface {
 	// Class Variables
-    private java.util.Hashtable<Integer, ConcordanceDataElement> table; 
-    private int size = 0; 
-    private final double factor = 1.5; 
+    protected java.util.Hashtable<Integer, java.util.LinkedList<ConcordanceDataElement>> table; 
+    protected int size = 0; 
+    protected double factor = 1.5;
+    protected int minimum = 2;
+    protected java.util.ArrayList<String> blocked = new java.util.ArrayList<String>(java.util.Arrays.asList("and", "the"));
     
     /**
      * Class Constructor
@@ -20,8 +22,16 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
      * @throws None
      */
 	public ConcordanceDataStructure(String w, int s) {
-		// TODO Calculate size, add words
-		table = new java.util.Hashtable<Integer, ConcordanceDataElement>();
+		// Variables
+		table = new java.util.Hashtable<Integer, java.util.LinkedList<ConcordanceDataElement>>(s, (float) this.factor);
+		String[] lines = w.split("\n");
+		
+		// Loops
+		for (int line = 0; line < lines.length; line++) {
+			for (String word : lines[line].split(" ")) {
+				this.add(word, line);
+			}
+		}
 	}
 
 	/**
@@ -31,8 +41,7 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
      * @throws None
 	 */
 	public ConcordanceDataStructure(int s) {
-		// TODO Calculate size
-		table = new java.util.Hashtable<Integer, ConcordanceDataElement>();
+		table = new java.util.Hashtable<Integer, java.util.LinkedList<ConcordanceDataElement>>(s, (float) this.factor);
 	}	 
 
 	/**
@@ -50,12 +59,32 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
 		ConcordanceDataElement element = new ConcordanceDataElement(w);
 
 		// Checks
+		if (element.getWord().length() <= this.minimum) { return; }
+		if (this.blocked.indexOf(element.getWord()) >= 0) { return; }
 		if (this.table.containsKey(element.hashCode()) == true) {
-			this.table.get(element.hashCode()).addPage(l);
-			return;
+			/*
+			 * Notes:
+			 * The has table already has a word at the specified index
+			 * We have to find the correct word, and add the new page to that word
+			 */
+			// Variables
+			java.util.LinkedList<ConcordanceDataElement> item = this.table.get(element.hashCode());
+			
+			item.forEach((v) -> {
+				// Checks
+				if (!v.getWord().equals(element.getWord())) { return; }
+				
+				v.addLine(l);
+			});
 		} else {
-			this.table.put(element.hashCode(), element);
-			return;
+			/* 
+			 * Notes:
+			 * The hash table does not have anything at the specified index
+			 * We create a new linked list at the index, and add the word + page
+			 */
+			this.table.put(element.hashCode(), new java.util.LinkedList<ConcordanceDataElement>());
+			this.table.get(element.hashCode()).push(element);
+			this.table.get(element.hashCode()).get(0).addPage(l);
 		}
 	} 
 
@@ -67,13 +96,19 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
 	 * @throws None
 	 */
 	public java.util.ArrayList<String> showAll() {
-		// TODO Sort then convert to string, then return
-		
 		// Variables
-		java.util.ArrayList<ConcordanceDataElement> unsortedList = new java.util.ArrayList<ConcordanceDataElement>(this.table.values());
+		java.util.ArrayList<String> result = new java.util.ArrayList<String>();
+		
+		// Loop (HashMap)
+		this.table.forEach((k, list) -> {
+			// Loop (LinkedList)
+			list.forEach((word) -> {
+				result.add(word.toString());
+			});
+		});
 		
 		// Return
-		return new java.util.ArrayList<String>();
+		return result;
 	}
 	
 	/**
@@ -84,16 +119,52 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
 	 * @throws None
 	 */
 	public int getTableSize() {
-		return this.size;
+		return this.table.size();
 	}
 	
+	/**
+	 * Get An ArrayList of Words At Specified Index
+	 * 
+	 * @param Integer index
+	 * @return ArrayList<String> words
+	 * @throws None
+	 */
 	public java.util.ArrayList<String> getWords(int index) {
-		// TODO
-		return null;
+		// Variables
+		java.util.ArrayList<String> words = new java.util.ArrayList<String>();
+		java.util.LinkedList<ConcordanceDataElement> element = this.table.get(index);
+		
+		// Checks
+		if (element != null) {
+			element.iterator().forEachRemaining((e) -> {
+				words.add(e.getWord());
+			});
+		}
+		
+		// Return
+		return words;
 	}
 	   
+	/**
+	 * Get An ArrayList of Pages At Specified Inex
+	 * 
+	 * @param Integer index
+	 * @return ArrayList<LinkedList<Integer>> pages
+	 * @throws None
+	 */
 	public java.util.ArrayList<java.util.LinkedList<Integer>> getPageNumbers(int index) {
-		// TODO
-		return null;
+		// Variables
+		java.util.ArrayList<java.util.LinkedList<Integer>> pages = new java.util.ArrayList<java.util.LinkedList<Integer>>();
+		java.util.LinkedList<ConcordanceDataElement> element = this.table.get(index);
+		
+		// Checks
+		if (element != null) {
+			element.iterator().forEachRemaining((e) -> {
+				pages.add(e.getList());
+			});
+		}
+		
+		// Return
+		return pages;
 	}	
 }
