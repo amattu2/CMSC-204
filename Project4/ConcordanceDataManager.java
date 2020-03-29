@@ -39,8 +39,6 @@ public class ConcordanceDataManager implements ConcordanceDataManagerInterface {
 		String text = this.readFile(r);
 		ConcordanceDataStructure structure = new ConcordanceDataStructure(text, text.split(" ").length);
 		
-		System.out.println("Read from file: \n" + text);
-		
 		// Return
 		return this.writeFile(w, structure.showAll());
 	}

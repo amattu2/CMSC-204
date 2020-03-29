@@ -13,6 +13,7 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
     protected double factor = 1.5;
     protected int minimum = 2;
     protected java.util.ArrayList<String> blocked = new java.util.ArrayList<String>(java.util.Arrays.asList("and", "the"));
+    protected boolean found = false;
     
     /**
      * Class Constructor
@@ -68,14 +69,22 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
 			 * We have to find the correct word, and add the new page to that word
 			 */
 			// Variables
+			this.found = false;
 			java.util.LinkedList<ConcordanceDataElement> item = this.table.get(element.hashCode());
 			
+			// Loops
 			item.forEach((v) -> {
 				// Checks
 				if (!v.getWord().equals(element.getWord())) { return; }
 				
 				v.addLine(l);
+				this.found = true;
 			});
+			
+			// Checks
+			if (this.found == false) {
+				item.add(element);
+			}
 		} else {
 			/* 
 			 * Notes:
@@ -103,7 +112,7 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
 		this.table.forEach((k, list) -> {
 			// Loop (LinkedList)
 			list.forEach((word) -> {
-				result.add(word.toString());
+				result.add(word.toString() + "\n");
 			});
 		});
 		
