@@ -1,7 +1,3 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-
 /**
  * A ConcordanceDataStructure implementation
  * 
@@ -18,7 +14,7 @@ public class ConcordanceDataManager implements ConcordanceDataManagerInterface {
 	 * @return ArrayList<String> formatted result
 	 * @throws None
 	 */
-	public ArrayList<String> createConcordanceArray(String text) {
+	public java.util.ArrayList<String> createConcordanceArray(String text) {
 		// Variables
 		ConcordanceDataStructure structure = new ConcordanceDataStructure(text, text.split(" ").length);
 		
@@ -34,7 +30,7 @@ public class ConcordanceDataManager implements ConcordanceDataManagerInterface {
 	 * @return Boolean success
 	 * @throws FileNotFoundException
 	 */
-	public boolean createConcordanceFile(File r, File w) throws FileNotFoundException {
+	public boolean createConcordanceFile(java.io.File r, java.io.File w) throws java.io.FileNotFoundException {
 		// Variables
 		String text = this.readFile(r);
 		ConcordanceDataStructure structure = new ConcordanceDataStructure(text, text.split(" ").length);
@@ -50,7 +46,7 @@ public class ConcordanceDataManager implements ConcordanceDataManagerInterface {
 	 * @return String file text
 	 * @throws None
 	 */
-	protected String readFile(File handle) {
+	protected String readFile(java.io.File handle) {
 		try {
 			// Variables
 			java.lang.StringBuilder string = new java.lang.StringBuilder();
@@ -75,7 +71,7 @@ public class ConcordanceDataManager implements ConcordanceDataManagerInterface {
 	 * @return Boolean success
 	 * @throws None
 	 */
-	protected boolean writeFile(File handle, ArrayList<String> lines) {
+	protected boolean writeFile(java.io.File handle, java.util.ArrayList<String> lines) {
 		try {
 			// Variables
 			java.io.FileWriter writer = new java.io.FileWriter(handle);
