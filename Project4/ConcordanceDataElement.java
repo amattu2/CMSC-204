@@ -19,7 +19,7 @@ public class ConcordanceDataElement implements java.lang.Comparable<ConcordanceD
 	 */
 	public ConcordanceDataElement(String w) {
 		// Variables
-		this.word = w.toLowerCase().replace("?", "").replace(".", "").replace(";", "").replace("\"", "");
+		this.word = w.trim().toLowerCase().replace("?", "").replace(".", "").replace(";", "").replace("\"", "");
 		this.lines = new java.util.LinkedList<Integer>();
 	}
 	
@@ -66,7 +66,24 @@ public class ConcordanceDataElement implements java.lang.Comparable<ConcordanceD
 	 * @throws None
 	 */
 	public java.util.LinkedList<Integer> getList() {
-		return this.lines;
+		// Variables
+		java.util.LinkedList<Integer> list = new java.util.LinkedList<Integer>();
+		
+		// Loops
+		for (int line : this.lines) {
+			list.add(line);
+		}
+		
+		// Sort
+		java.util.Collections.sort(list, new java.util.Comparator<Integer>() {
+			@Override
+			public int compare(Integer i1, Integer i2) {
+				return i1 - i2;
+			}
+		});
+		
+		// Return
+		return list;
 	}
 	
 	/**
@@ -88,7 +105,7 @@ public class ConcordanceDataElement implements java.lang.Comparable<ConcordanceD
 	 * @throws None
 	 */
 	public String toString() {
-		return this.word + ": " + this.lines.toString().replace("[", "").replace("]", "");
+		return this.word + ": " + this.getList().toString().replace("[", "").replace("]", "");
 	}
 	
 	/**
