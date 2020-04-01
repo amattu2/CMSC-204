@@ -1,0 +1,11 @@
+ ll: 4
+answer: 2
+crazy: 3
+daisy: 1
+for: 4
+give: 2
+half: 3
+i'm: 3
+love: 4
+you: 4
+your: 2

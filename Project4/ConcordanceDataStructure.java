@@ -116,7 +116,7 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
 			
 			// Loop (LinkedList)
 			list.forEach((word) -> {
-				result.add(word.toString() + "\n");
+				result.add(word.toString());
 			});
 		});
 		

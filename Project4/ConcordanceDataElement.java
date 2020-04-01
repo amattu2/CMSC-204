@@ -19,7 +19,7 @@ public class ConcordanceDataElement implements java.lang.Comparable<ConcordanceD
 	 */
 	public ConcordanceDataElement(String w) {	
 		// Variables
-		this.word = w.trim().toLowerCase().replaceAll("[\\?\\+\\,\\.\\!\\_]", "");
+		this.word = w.trim().toLowerCase().replaceAll("[\\?\\+\\,\\.\\!\\_\\\"\\;]", "");
 		this.lines = new java.util.LinkedList<Integer>();
 	}
 	

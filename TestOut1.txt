@@ -1,0 +1,20 @@
+before: 14
+begin: 7
+dark: 14
+expected: 11
+grandmother's: 13
+hate: 3
+have: 4
+home: 14
+house: 13
+into: 1, 5, 8, 12
+it's: 2, 6
+journey: 7
+leave: 3
+ma'am: 11
+must: 7
+through: 9
+time: 2, 6
+trees: 9
+where: 10
+woods: 1, 5, 8, 12

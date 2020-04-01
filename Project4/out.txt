@@ -1,1078 +1,467 @@
-find: 145
-
-fine: 47
-
-stress: 183
-
-resentfully,: 136
-
-amusement,: 157
-
-four: 35, 46, 104
-
-better: 87
-
-she,: 214
-
-to-morrow: 160
-
-however: 12
-
-poor: 96
-
-heard: 17, 99
-
-tumult: 201
-
-less: 116
-
-forget,: 138
-
-likes,: 135
-
-house: 38
-
-mother: 135
-
-see: 35, 60, 71, 83, 104
-
-therefore,: 175
-
-observing: 130
-
-nor: 88
-
-not: 20, 27, 66, 69, 80, 87, 88, 102, 107, 128, 135, 136, 141, 146, 148, 157, 162, 164, 169, 174, 188, 195, 196, 215, 216, 222
-
-fortune,: 10
-
-now: 66, 198, 209
-
-twenty: 100, 107
-
-return: 190, 226
-
-mixture: 113
-
-fatigued: 212
-
-made: 25
-
-youngest,: 219, 223
-
-times: 154
-
-making: 217
-
-two: 141
-
-him: 17, 57, 80, 83, 138, 139, 164, 169, 197, 215, 226
-
-door: 214
-
-themselves,: 61
-
-this: 13, 31, 196, 208
-
-agreed: 36
-
-books: 186
-
-his: 12, 17, 27, 37, 40, 51, 52, 54, 84, 115, 128, 130, 193, 212, 215
-
-lydia,: 218
-
-about: 23, 209
-
-herself: 118, 164
-
-nerves: 96, 98, 152
-
-acquainted: 169
-
-recommend: 91
-
-jane,: 88
-
-introduce: 139, 163, 166
-
-be,: 158
-
-sake!: 151
-
-_are_: 218
-
-lines: 83
-
-give: 67
-
-disclosed: 129
-
-their: 15, 175, 179
-
-why,: 33
-
-into: 71, 105
-
-park: 18
-
-north: 34
-
-expected: 202
-
-england: 34
-
-come: 105, 162
-
-develop: 116
-
-suddenly: 131
-
-she: 22, 67, 88, 116, 117, 118, 129, 141, 142, 154, 164, 176, 202
-
-daughters,: 67
-
-herself,: 149
-
-came: 34
-
-fortune: 34, 46
-
-entering: 13
-
-man: 9, 12, 34, 46, 173
-
-dance: 219
-
-good-humoured: 89
-
-circumspection: 172
-
-you: 17, 27, 33, 51, 56, 57, 60, 61, 62, 65, 71, 74, 78, 79, 80, 82, 83, 87, 89, 95, 96, 98, 99, 102, 104, 107, 138, 145, 146, 152, 166, 170, 176, 183, 184, 185, 195, 206, 208, 211, 214, 215, 218, 219
-
-objection: 29
-
-william: 77
-
-single,: 46
-
-may: 12, 60, 62, 166, 211
-
-friend,: 166
-
-bingley: 42, 62, 71, 82, 126, 133, 135, 167, 191, 219
-
-always: 89, 127
-
-nonsense!: 180
-
-dare: 82, 219
-
-them,: 57, 62, 91, 184
-
-else: 174
-
-nonsense,: 56, 179
-
-sir: 77
-
-delight: 96
-
-read: 185
-
-returned: 22
-
-knowledge: 129
-
-then,: 166
-
-cried: 27, 162, 182, 193
-
-but,: 71, 148
-
-better,: 61
-
-me,: 29, 98, 216
-
-mamma,: 138
-
-very: 56, 82, 173, 197
-
-cough: 157, 211
-
-lady: 17, 77, 185
-
-name: 40
-
-assemblies,: 139
-
-friends: 99
-
-girls: 60, 84, 92, 179, 206
-
-merely: 78
-
-every: 217
-
-depend: 110, 146
-
-determining: 226
-
-none: 91
-
-matter: 216
-
-five: 47, 66
-
-earliest: 126
-
-spent: 225
-
-_can_: 95
-
-often: 69
-
-ball: 158, 220
-
-astonishment: 200
-
-information,: 117
-
-prejudice: 0
-
-men: 104
-
-how: 49, 51, 56, 95, 170, 188, 205, 207, 215, 225
-
-tell: 29, 195, 217
-
-surely: 82
-
-austen: 2
-
-feelings: 12
-
-neglect: 207
-
-so!: 56
-
-make: 115, 148, 186, 215
-
-adjusting: 190
-
-contain: 148
-
-so,: 151
-
-tallest: 223
-
-hearing: 29
-
-bit: 87
-
-promised: 139
-
-invitation: 31
-
-never: 208
-
-agree: 184
-
-married: 44, 119
-
-determined: 77
-
-must: 10, 33, 52, 57, 71, 79, 85, 175
-
-down: 35
-
-tiresome!: 51
-
-property: 14
-
-day,: 17
-
-neighbourhood: 72, 105
-
-rightful: 14
-
-end: 38, 173
-
-lizzy: 85, 87, 92, 133, 158
-
-upon: 110
-
-silly: 92
-
-three-and-twenty: 114
-
-laid: 183
-
-shall: 138
-
-stand: 175
-
-afraid: 222
-
-dinner: 227
-
-addressed: 131
-
-quickness: 93
-
-girls!: 47, 214
-
-other: 15, 92
-
-mother,: 162
-
-there: 110
-
-ignorant: 92
-
-ever: 215
-
-children: 95
-
-visit,: 197, 226
-
-introduction,: 183
-
-before: 37, 163, 195
-
-humour,: 113
-
-declare: 202
-
-coughs,: 154
-
-many: 104
-
-delighted: 36
-
-impossible: 79, 163
-
-all,: 174
-
-these: 100
-
-room,: 212
-
-nieces: 141
-
-know,: 33, 78, 185
-
-discontented,: 117
-
-netherfield: 18, 33
-
-excellent: 214
-
-fortnight's: 172
-
-engage: 74
-
-therefore: 57
-
-send: 60, 83
-
-character: 115
-
-others: 88
-
-now,: 211
-
-since: 107, 136
-
-acquaintance: 172, 198, 207
-
-life: 118, 216
-
-pretend: 66
-
-you,: 184, 205, 217
-
-decline: 176
-
-flatter: 65
-
-day: 163, 217
-
-i'm: 223
-
-known: 12, 196
-
-more: 74, 92, 145
-
-get: 104, 118
-
-design: 54
-
-forms: 183
-
-certainly: 65, 172, 196
-
-long: 22, 33, 139, 141, 162, 175
-
-here: 54
-
-reflection,: 185
-
-caprice,: 114
-
-dear: 17, 51, 98, 205
-
-lydia: 89, 222
-
-establishment: 76
-
-ladies: 200
-
-still: 61
-
-sakes,: 218
-
-though,: 201
-
-immediately: 36
-
-trimming: 130
-
-stoutly,: 222
-
-opinion: 142
-
-mary: 185, 188, 190
-
-acknowledged,: 9
-
-perhaps: 61, 201
-
-share: 65
-
-such: 12, 69, 87, 95, 107, 141, 207
-
-least: 100
-
-possession: 9, 37
-
-insufficient: 115
-
-office,: 176
-
-pride: 0
-
-wife: 10, 27, 115, 128, 193, 212
-
-whichever: 84
-
-your: 76, 95, 98, 158, 166, 172, 206, 218
-
-large: 34, 46
-
-called: 196
-
-over,: 202
-
-twenty,: 110
-
-minds: 13
-
-_her_: 89, 115, 167
-
-shut: 215
-
-mind: 115
-
-over: 67, 104
-
-and,: 175, 211
-
-bennet's: 226
-
-want: 10, 27, 29
-
-_we_: 174
-
-only: 76
-
-_you_: 29
-
-_us_: 79
-
-quick: 113
-
-mistake: 98
-
-like: 62, 92, 133
-
-servants: 37
-
-deep: 185
-
-woman: 66, 69, 116
-
-actually: 197
-
-waited: 126
-
-temper: 117
-
-vexing: 96
-
-act: 176
-
-_am_: 222
-
-visiting: 119
-
-odd: 113
-
-sisters: 93
-
-assure: 74, 83
-
-extracts: 186
-
-experience: 114
-
-taken: 27, 33
-
-but: 22, 56, 65, 76, 89, 92, 104, 138, 174, 188, 195, 197, 205, 217
-
-mrs: 22, 33, 139, 141, 148, 162, 175, 179, 200
-
-last: 18, 100, 127, 206
-
-enough: 31
-
-should: 107, 128, 205, 208, 226
-
-choose,: 211
-
-escape: 198
-
-preference: 89
-
-spoke,: 212
-
-evening: 128, 225
-
-word: 85, 209
-
-venture: 174
-
-joy: 201
-
-hearty: 84
-
-general,: 78
-
-just: 22, 200
-
-wished: 188, 200
-
-did: 195
-
-oh!: 46, 222
-
-mention: 99
-
-design!: 56
-
-aye,: 162
-
-young: 34, 104, 185
-
-wife,: 51
-
-chapter: 6, 123
-
-consider: 76, 183
-
-advantage: 166
-
-though: 84, 127, 218, 222
-
-go,: 60, 78, 79
-
-ah,: 102
-
-will: 61, 79, 82, 83, 87, 104, 107, 110, 133, 141, 163, 164, 174, 176, 215, 219
-
-sensible,: 188
-
-consideration: 99
-
-which: 61
-
-fancied: 118
-
-_have_: 65
-
-thinking: 52, 67
-
-love: 57
-
-rest: 201, 225
-
-chooses: 84
-
-marrying: 52, 84
-
-jane: 2
-
-business: 118
-
-surpassing: 201
-
-stared: 179
-
-father: 154, 179, 214
-
-cases,: 69
-
-was: 31, 35, 113, 116, 117, 118, 119, 126, 128, 129, 200, 202, 205, 206, 214, 225
-
-fixed: 13
-
-year: 47, 105
-
-way: 95, 135
-
-_may_: 57
-
-something: 92, 188
-
-let: 18, 190
-
-have,: 214
-
-with:: 131
-
-pieces: 152
-
-desire: 87
-
-throw: 85
-
-intended: 127
-
-mean: 116
-
-uncertain: 117
-
-us,: 107
-
-glad: 83, 145
-
-began: 149, 202
-
-bingley,: 193
-
-surrounding: 14
-
-emphatic: 182
-
-assuring: 127
-
-conjecturing: 225
-
-impossible,: 169
-
-am!: 207
-
-ought: 67
-
-years: 100, 114
-
-take: 37, 96, 177
-
-believe: 141
-
-after: 128, 174
-
-been: 22, 115
-
-myself: 170, 177
-
-told: 23
-
-beauty: 67, 69
-
-knew: 188, 205
-
-use: 107
-
-old: 99
-
-woman,: 142
-
-morning: 196, 208
-
-michaelmas,: 37
-
-talk: 56
-
-indeed: 71, 79
-
-all: 23, 92, 111, 202
-
-selfish,: 142
-
-_what_: 135
-
-beauty,: 65
-
-scolding: 149
-
-too,: 208
-
-what: 40, 47, 76, 102, 173, 182, 184, 200, 202, 214
-
-either,: 216
-
-fretfully: 157
-
-said: 17, 135, 138, 145, 154, 179, 208, 211, 214, 222
-
-here,: 22
-
-fortnight: 160, 174
-
-_that_: 195
-
-visit: 57, 78, 80, 108, 110, 127, 128, 136
-
-half: 88
-
-live: 104
-
-one: 15, 17, 52, 57, 77, 149, 173
-
-meet: 138
-
-occasion: 60
-
-love,: 218
-
-daughters: 15, 76, 119, 149, 175
-
-sick: 193
-
-with: 36, 57, 99, 169, 184, 212, 219
-
-don't: 151
-
-elizabeth,: 138
-
-any: 62, 141, 148
-
-sure: 88, 206
-
-who: 27, 126
-
-bennet: 20, 25, 113, 126, 145, 148, 179, 201, 211
-
-why: 195
-
-can: 49, 51, 56, 170, 182, 217
-
-dear,: 33, 46, 65, 71, 110, 166
-
-while: 190, 203
-
-high: 98
-
-loved: 206
-
-unable: 148
-
-sorry: 195
-
-newcomers: 79
-
-few: 83
-
-second: 130
-
-those: 126
-
-pleasant,: 217
-
-cannot: 173, 184, 198
-
-only,: 179
-
-reply,: 148
-
-when: 66, 71, 110, 117, 157, 169, 201, 214, 226
-
-morris: 36
-
-some: 15, 37
-
-honour: 172
-
-suffer: 102
-
-truth: 9, 13
-
-nervous: 118
-
-hope: 104, 133
-
-meaning: 182
-
-bennet!: 205
-
-understanding,: 116
-
-affect: 49
-
-kindness,: 176
-
-anything: 66, 218
-
-bennet,: 17, 51, 95, 169
-
-are: 37, 61, 77, 82, 89, 91, 99, 110, 135, 136, 185
-
-deigned: 148
-
-settling: 54
-
-thing: 47, 87, 141
-
-think: 69, 76, 176
-
-till: 128, 163, 209
-
-thousand: 47, 105
-
-left: 212
-
-ill: 155
-
-soon: 58, 225
-
-ask: 226
-
-quite: 184
-
-gone: 208
-
-him,: 127, 163
-
-time: 216
-
-hat,: 130
-
-somebody: 174
-
-week: 38
-
-little: 12, 85, 117, 151, 173
-
-replied: 20, 51, 91, 157
-
-really: 173
-
-would: 76, 196, 218, 225
-
-good: 10, 85, 205, 208
-
-handsome: 62, 88
-
-continued,: 190
-
-following: 129
-
-extraordinary: 66
-
-families,: 14
-
-our: 47, 216
-
-great: 186
-
-employed: 130
-
-sarcastic: 113
-
-from: 34
-
-know: 27, 52, 102, 135, 164, 173, 215
-
-raptures: 212
-
-keep: 151
-
-respect: 98
-
-kindness: 215
-
-fall: 57
-
-manner: 130
-
-place,: 35
-
-well,: 207
-
-answer: 25
-
-unlucky: 197
-
-new: 217
-
-understand: 115
-
-own: 67, 95, 142, 157
-
-heaven's: 151
-
-sure!: 46
-
-universally: 9
-
-does: 162
-
-over-scrupulous,: 82
-
-have: 17, 29, 91, 96, 98, 99, 142, 145, 151, 166, 196, 197, 208
-
-chance: 175
-
-is,: 22, 162
-
-abuse: 95
-
-reserve,: 114
-
-acquaintances: 217
-
-much: 35, 69, 91, 196, 211
-
-compassion: 96, 152
-
-account,: 78
-
-single: 9, 44, 46
-
-kitty,: 151, 211
-
-it,: 36, 104, 110, 133
-
-had: 20, 65, 114, 127, 129, 196, 202
-
-than: 74, 87, 93
-
-too: 206
-
-serving: 146
-
-best: 62
-
-that: 9, 14, 17, 20, 33, 34, 36, 52, 54, 56, 60, 78, 110, 114, 128, 138, 139, 145, 182, 183, 195, 200, 202, 208, 216
-
-has: 22, 27, 66, 69, 92, 141, 154
-
-paid: 129, 197
-
-lucas: 77
-
-exclamation: 182
-
-for: 22, 47, 60, 61, 77, 78, 79, 85, 96, 98, 151, 157, 163, 164, 185, 215, 216, 218, 222
-
-for,: 74
-
-monday: 35
-
-discretion: 154
-
-amends: 215
-
-daughter: 130
-
-considered: 14
-
-nonsense: 184
-
-kitty: 154, 157
-
-giving: 89
-
-impatiently: 27
-
-well: 13, 206
-
-its: 119
-
-come,: 107
-
-joke,: 208
-
-news: 119
-
-likely: 56
-
-views: 12
-
-grown-up: 67
-
-ideas,: 190
-
-persuade: 206
-
-next: 38, 158, 219
-
-neighbourhood,: 13
-
-among: 126
-
-party: 63
-
-tear: 152
-
-consent: 84
-
-say: 82, 184, 188, 219
-
-pleased: 207
-
-them: 49, 52, 61, 77, 91, 99, 108, 110, 152, 155
-
-then: 129
-
-_there_: 184
-
-solace: 119
-
-her: 67, 93, 118, 131, 135, 142, 143, 146, 149, 154, 162, 163, 175, 190
-
-difficult: 116
-
-hypocritical: 142
-
-comes: 58, 71
-
-chaise: 35
-
-coughing: 151
-
-they: 78, 91, 98, 226
-
-says: 33
-
-first: 13, 201
-
-parts,: 113
-
-back: 162
-
-teasing: 170
-
-hear: 195
-
+about: 24, 210
+abuse: 96
+account: 79
+acknowledged: 10
+acquaintance: 173, 199, 208
+acquaintances: 218
+acquainted: 170
+act: 177
+actually: 198
+addressed: 132
+adjusting: 191
+advantage: 167
+affect: 50
+afraid: 223
+after: 129, 175
+agree: 185
+agreed: 37
+all: 24, 93, 112, 175, 203
+always: 90, 128
+amends: 216
+among: 127
+amusement: 158
+answer: 26
+any: 63, 142, 149
+anything: 67, 219
+are: 38, 62, 78, 83, 90, 92, 100, 111, 136, 137, 186, 219
+ask: 227
+assemblies: 140
+assure: 75, 84
+assuring: 128
+astonishment: 201
+austen: 3
+aye: 163
+back: 163
+ball: 159, 221
+beauty: 66, 68, 70
+been: 23, 116
+before: 38, 164, 196
+began: 150, 203
+believe: 142
+bennet: 18, 21, 26, 52, 96, 114, 127, 146, 149, 170, 180, 202, 206, 212
+bennet's: 227
+best: 63
+better: 62, 88
+bingley: 43, 63, 72, 83, 127, 134, 136, 168, 192, 194, 220
+bit: 88
+books: 187
+business: 119
+but: 23, 57, 66, 72, 77, 90, 93, 105, 139, 149, 175, 189, 196, 198, 206, 218
+called: 197
+came: 35
+can: 50, 52, 57, 96, 171, 183, 218
+cannot: 174, 185, 199
+caprice: 115
+cases: 70
+certainly: 66, 173, 197
+chaise: 36
+chance: 176
+chapter: 7, 124
+character: 116
+children: 96
+choose: 212
+chooses: 85
+circumspection: 173
+come: 106, 108, 163
+comes: 59, 72
+compassion: 97, 153
+conjecturing: 226
+consent: 85
+consider: 77, 184
+consideration: 100
+considered: 15
+contain: 149
+continued: 191
+cough: 158, 212
+coughing: 152
+coughs: 155
+cried: 28, 163, 183, 194
+dance: 220
+dare: 83, 220
+daughter: 131
+daughters: 16, 68, 77, 120, 150, 176
+day: 18, 164, 218
+dear: 18, 34, 47, 52, 66, 72, 99, 111, 167, 206
+declare: 203
+decline: 177
+deep: 186
+deigned: 149
+delight: 97
+delighted: 37
+depend: 111, 147
+design: 55, 57
+desire: 88
+determined: 78
+determining: 227
+develop: 117
+did: 196
+difficult: 117
+dinner: 228
+disclosed: 130
+discontented: 118
+discretion: 155
+does: 163
+don't: 152
+door: 215
+down: 36
+earliest: 127
+either: 217
+elizabeth: 139
+else: 175
+emphatic: 183
+employed: 131
+end: 39, 174
+engage: 75
+england: 35
+enough: 32
+entering: 14
+escape: 199
+establishment: 77
+evening: 129, 226
+ever: 216
+every: 218
+excellent: 215
+exclamation: 183
+expected: 203
+experience: 115
+extracts: 187
+extraordinary: 67
+fall: 58
+families: 15
+fancied: 119
+father: 155, 180, 215
+fatigued: 213
+feelings: 13
+few: 84
+find: 146
+fine: 48
+first: 14, 202
+five: 48, 67
+fixed: 14
+flatter: 66
+following: 130
+for: 23, 48, 61, 62, 75, 78, 79, 80, 86, 97, 99, 152, 158, 164, 165, 186, 216, 217, 219, 223
+forget: 139
+forms: 184
+fortnight: 161, 175
+fortnight's: 173
+fortune: 11, 35, 47
+four: 36, 47, 105
+fretfully: 158
+friend: 167
+friends: 100
+from: 35
+general: 79
+get: 105, 119
+girls: 48, 61, 85, 93, 180, 207, 215
+give: 68
+giving: 90
+glad: 84, 146
+gone: 209
+good: 11, 86, 206, 209
+good-humoured: 90
+great: 187
+grown-up: 68
+had: 21, 66, 115, 128, 130, 197, 203
+half: 89
+handsome: 63, 89
+has: 23, 28, 67, 70, 93, 142, 155
+hat: 131
+have: 18, 30, 66, 92, 97, 99, 100, 143, 146, 152, 167, 197, 198, 209, 215
+hear: 196
+heard: 18, 100
+hearing: 30
+hearty: 85
+heaven's: 152
+her: 68, 90, 94, 116, 119, 132, 136, 143, 144, 147, 150, 155, 163, 164, 168, 176, 191
+here: 23, 55
+herself: 119, 150, 165
+high: 99
+him: 18, 58, 81, 84, 128, 139, 140, 164, 165, 170, 198, 216, 227
+his: 13, 18, 28, 38, 41, 52, 53, 55, 85, 116, 129, 131, 194, 213, 216
+honour: 173
+hope: 105, 134
+house: 39
+how: 50, 52, 57, 96, 171, 189, 206, 208, 216, 226
+however: 13
+humour: 114
+hypocritical: 143
+i'm: 224
+ideas: 191
+ignorant: 93
+ill: 156
+immediately: 37
+impatiently: 28
+impossible: 80, 164, 170
+indeed: 72, 80
+information: 118
+insufficient: 116
+intended: 128
+into: 72, 106
+introduce: 140, 164, 167
+introduction: 184
+invitation: 32
+its: 120
+jane: 3, 89
+joke: 209
+joy: 202
+just: 23, 201
+keep: 152
+kindness: 177, 216
+kitty: 152, 155, 158, 212
+knew: 189, 206
+know: 28, 34, 53, 79, 103, 136, 165, 174, 186, 216
+knowledge: 130
+known: 13, 197
+ladies: 201
+lady: 18, 78, 186
+laid: 184
+large: 35, 47
+last: 19, 101, 128, 207
+least: 101
+left: 213
+less: 117
+let: 19, 191
+life: 119, 217
+like: 63, 93, 134
+likely: 57
+likes: 136
+lines: 84
+little: 13, 86, 118, 152, 174
+live: 105
+lizzy: 86, 88, 93, 134, 159
+long: 23, 34, 140, 142, 163, 176
+love: 58, 219
+loved: 207
+lucas: 78
+lydia: 90, 219, 223
+made: 26
+make: 116, 149, 187, 216
+making: 218
+mamma: 139
+man: 10, 13, 35, 47, 174
+manner: 131
+many: 105
+married: 45, 120
+marrying: 53, 85
+mary: 186, 189, 191
+matter: 217
+may: 13, 58, 61, 63, 167, 212
+mean: 117
+meaning: 183
+meet: 139
+men: 105
+mention: 100
+merely: 79
+michaelmas: 38
+mind: 116
+minds: 14
+mistake: 99
+mixture: 114
+monday: 36
+more: 75, 93, 146
+morning: 197, 209
+morris: 37
+mother: 136, 163
+mrs: 23, 34, 140, 142, 149, 163, 176, 180, 201
+much: 36, 70, 92, 197, 212
+must: 11, 34, 53, 58, 72, 80, 86, 176
+myself: 171, 178
+name: 41
+neglect: 208
+neighbourhood: 14, 73, 106
+nerves: 97, 99, 153
+nervous: 119
+netherfield: 19, 34
+never: 209
+new: 218
+newcomers: 80
+news: 120
+next: 39, 159, 220
+nieces: 142
+none: 92
+nonsense: 57, 180, 181, 185
+nor: 89
+north: 35
+not: 21, 28, 67, 70, 81, 88, 89, 103, 108, 129, 136, 137, 142, 147, 149, 158, 163, 165, 170, 175, 189, 196, 197, 216, 217, 223
+now: 67, 199, 210, 212
+objection: 30
+observing: 131
+occasion: 61
+odd: 114
+office: 177
+often: 70
+old: 100
+one: 16, 18, 53, 58, 78, 150, 174
+only: 77, 180
+opinion: 143
+other: 16, 93
+others: 89
+ought: 68
+our: 48, 217
+over: 68, 105, 203
+over-scrupulous: 83
+own: 68, 96, 143, 158
+paid: 130, 198
+park: 19
+parts: 114
+party: 64
+perhaps: 62, 202
+persuade: 207
+pieces: 153
+place: 36
+pleasant: 218
+pleased: 208
+poor: 97
+possession: 10, 38
+preference: 90
+prejudice: 1
+pretend: 67
+pride: 1
+promised: 140
+property: 15
+quick: 114
+quickness: 94
+quite: 185
+raptures: 213
+read: 186
+really: 174
+recommend: 92
+reflection: 186
+replied: 21, 52, 92, 158
+reply: 149
+resentfully: 137
+reserve: 115
+respect: 99
+rest: 202, 226
+return: 191, 227
+returned: 23
+rightful: 15
+room: 213
+said: 18, 136, 139, 146, 155, 180, 209, 212, 215, 223
+sake: 152
+sakes: 219
+sarcastic: 114
+say: 83, 185, 189, 220
+says: 34
+scolding: 150
+second: 131
+see: 36, 61, 72, 84, 105
+selfish: 143
+send: 61, 84
+sensible: 189
+servants: 38
+serving: 147
+settling: 55
+shall: 139
+share: 66
+she: 23, 68, 89, 117, 118, 119, 130, 142, 143, 155, 165, 177, 203, 215
+should: 108, 129, 206, 209, 227
+shut: 216
+sick: 194
+silly: 93
+since: 108, 137
+single: 10, 45, 47
+sir: 78
+sisters: 94
+solace: 120
+some: 16, 38
+somebody: 175
+something: 93, 189
+soon: 59, 226
+sorry: 196
+spent: 226
+spoke: 213
+stand: 176
+stared: 180
+still: 62
+stoutly: 223
+stress: 184
+such: 13, 70, 88, 96, 108, 142, 208
+suddenly: 132
+suffer: 103
+sure: 47, 89, 207
+surely: 83
+surpassing: 202
+surrounding: 15
+take: 38, 97, 178
+taken: 28, 34
+talk: 57
+tallest: 224
+tear: 153
+teasing: 171
+tell: 30, 196, 218
+temper: 118
+than: 75, 88, 94
+that: 10, 15, 18, 21, 34, 35, 37, 53, 55, 57, 61, 79, 111, 115, 129, 139, 140, 146, 183, 184, 196, 201, 203, 209, 217
+their: 16, 176, 180
+them: 50, 53, 58, 62, 63, 78, 92, 100, 109, 111, 153, 156, 185
+themselves: 62
+then: 130, 167
+there: 111, 185
+therefore: 58, 176
+these: 101
+they: 79, 92, 99, 227
+thing: 48, 88, 142
+think: 70, 77, 177
+thinking: 53, 68
+this: 14, 32, 197, 209
+those: 127
+though: 85, 128, 202, 219, 223
+thousand: 48, 106
+three-and-twenty: 115
+throw: 86
+till: 129, 164, 210
+time: 217
+times: 155
+tiresome: 52
+told: 24
+to-morrow: 161
+too: 207, 209
+trimming: 131
+truth: 10, 14
+tumult: 202
+twenty: 101, 108, 111
+two: 142
+unable: 149
+uncertain: 118
+understand: 116
+understanding: 117
+universally: 10
+unlucky: 198
+upon: 111
+use: 108
+venture: 175
+very: 57, 83, 174, 198
+vexing: 97
+views: 13
+visit: 58, 79, 81, 109, 111, 128, 129, 137, 198, 227
+visiting: 120
+waited: 127
+want: 11, 28, 30
+was: 32, 36, 114, 117, 118, 119, 120, 127, 129, 130, 201, 203, 206, 207, 215, 226
+way: 96, 136
+week: 39
+well: 14, 207, 208
+what: 41, 48, 77, 103, 136, 174, 183, 185, 201, 203, 215
+when: 67, 72, 111, 118, 158, 170, 202, 215, 227
+which: 62
+whichever: 85
+while: 191, 204
+who: 28, 127
+why: 34, 196
+wife: 11, 28, 52, 116, 129, 194, 213
+will: 62, 80, 83, 84, 88, 105, 108, 111, 134, 142, 164, 165, 175, 177, 216, 220
+william: 78
+wished: 189, 201
+with:: 132
+with: 37, 58, 100, 170, 185, 213, 220
+woman: 67, 70, 117, 143
+word: 86, 210
+would: 77, 197, 219, 226
+year: 48, 106
+years: 101, 115
+you: 18, 28, 30, 34, 52, 57, 58, 61, 62, 63, 66, 72, 75, 79, 80, 81, 83, 84, 88, 90, 96, 97, 99, 100, 103, 105, 108, 139, 146, 147, 153, 167, 171, 177, 184, 185, 186, 196, 206, 207, 209, 212, 215, 216, 218, 219, 220
+young: 35, 105, 186
+youngest: 220, 224
+your: 77, 96, 99, 159, 167, 173, 207, 219
