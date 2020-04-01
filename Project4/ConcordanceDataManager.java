@@ -16,7 +16,15 @@ public class ConcordanceDataManager implements ConcordanceDataManagerInterface {
 	 */
 	public java.util.ArrayList<String> createConcordanceArray(String text) {
 		// Variables
-		ConcordanceDataStructure structure = new ConcordanceDataStructure(text, text.split(" ").length);
+		ConcordanceDataStructure structure = new ConcordanceDataStructure(text.split(" ").length);
+		String[] lines = text.split("\n");
+		
+		// Loops
+		for (int line = 0; line < lines.length; line++) {
+			for (String word : lines[line].split(" ")) {
+				structure.add(word, line + 1);
+			}
+		}
 		
 		// Return
 		return structure.showAll();
@@ -33,7 +41,15 @@ public class ConcordanceDataManager implements ConcordanceDataManagerInterface {
 	public boolean createConcordanceFile(java.io.File r, java.io.File w) throws java.io.FileNotFoundException {
 		// Variables
 		String text = this.readFile(r);
-		ConcordanceDataStructure structure = new ConcordanceDataStructure(text, text.split(" ").length);
+		ConcordanceDataStructure structure = new ConcordanceDataStructure(text.split(" ").length);
+		String[] lines = text.split("\n");
+		
+		// Loops
+		for (int line = 0; line < lines.length; line++) {
+			for (String word : lines[line].split(" ")) {
+				structure.add(word, line + 1);
+			}
+		}
 		
 		// Return
 		return this.writeFile(w, structure.showAll());
@@ -44,23 +60,21 @@ public class ConcordanceDataManager implements ConcordanceDataManagerInterface {
 	 * 
 	 * @param File handle
 	 * @return String file text
-	 * @throws None
+	 * @throws java.io.FileNotFoundException
 	 */
-	protected String readFile(java.io.File handle) {
-		try {
-			// Variables
-			java.lang.StringBuilder string = new java.lang.StringBuilder();
-			java.util.Scanner scanner = new java.util.Scanner(handle);
-			
-			// Loops
-			while (scanner.hasNextLine()) {
-				string.append(scanner.nextLine() + "\n");
-			}
-			
-			// Return
-			scanner.close();
-			return string.toString();
-		} catch (Exception e) { return ""; }
+	protected String readFile(java.io.File handle) throws java.io.FileNotFoundException {
+		// Variables
+		java.lang.StringBuilder string = new java.lang.StringBuilder();
+		java.util.Scanner scanner = new java.util.Scanner(handle);
+		
+		// Loops
+		while (scanner.hasNextLine()) {
+			string.append(scanner.nextLine() + "\n");
+		}
+		
+		// Return
+		scanner.close();
+		return string.toString();
 	}
 	
 	/**
@@ -69,10 +83,10 @@ public class ConcordanceDataManager implements ConcordanceDataManagerInterface {
 	 * @param File handle
 	 * @param ArrayList<String> lines
 	 * @return Boolean success
-	 * @throws None
+	 * @throws java.io.FileNotFoundException 
 	 */
-	protected boolean writeFile(java.io.File handle, java.util.ArrayList<String> lines) {
-		try {
+	protected boolean writeFile(java.io.File handle, java.util.ArrayList<String> lines) throws java.io.FileNotFoundException {
+		try { 
 			// Variables
 			java.io.FileWriter writer = new java.io.FileWriter(handle);
 			
@@ -84,6 +98,8 @@ public class ConcordanceDataManager implements ConcordanceDataManagerInterface {
 			// Return
 			writer.close();
 			return true;
-		} catch (Exception e) { return false; }
+		} catch(Exception e) {
+			throw new java.io.FileNotFoundException("File Not Found");
+		}
 	}
 }

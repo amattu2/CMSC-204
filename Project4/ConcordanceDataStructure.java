@@ -24,15 +24,8 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
      */
 	public ConcordanceDataStructure(String w, int s) {
 		// Variables
-		table = new java.util.Hashtable<Integer, java.util.LinkedList<ConcordanceDataElement>>(s, (float) this.factor);
-		String[] lines = w.split("\n");
-		
-		// Loops
-		for (int line = 0; line < lines.length; line++) {
-			for (String word : lines[line].split(" ")) {
-				this.add(word, line);
-			}
-		}
+		this.size = s;
+		this.table = new java.util.Hashtable<Integer, java.util.LinkedList<ConcordanceDataElement>>(s, (float) this.factor);
 	}
 
 	/**
@@ -42,7 +35,8 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
      * @throws None
 	 */
 	public ConcordanceDataStructure(int s) {
-		table = new java.util.Hashtable<Integer, java.util.LinkedList<ConcordanceDataElement>>(s, (float) this.factor);
+		this.size = s;
+		this.table = new java.util.Hashtable<Integer, java.util.LinkedList<ConcordanceDataElement>>(s, (float) this.factor);
 	}	 
 
 	/**
@@ -58,11 +52,12 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
 	public void add(String w, int l) {
 		// Variables
 		ConcordanceDataElement element = new ConcordanceDataElement(w);
-
+		int hashcode = Math.abs(element.hashCode()) % this.getTableSize();
+		
 		// Checks
 		if (element.getWord().length() <= this.minimum) { return; }
 		if (this.blocked.indexOf(element.getWord()) >= 0) { return; }
-		if (this.table.containsKey(element.hashCode()) == true) {
+		if (this.table.containsKey(hashcode) == true) {
 			/*
 			 * Notes:
 			 * The has table already has a word at the specified index
@@ -70,7 +65,7 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
 			 */
 			// Variables
 			this.found = false;
-			java.util.LinkedList<ConcordanceDataElement> item = this.table.get(element.hashCode());
+			java.util.LinkedList<ConcordanceDataElement> item = this.table.get(hashcode);
 			
 			// Loops
 			item.forEach((v) -> {
@@ -84,6 +79,7 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
 			// Checks
 			if (this.found == false) {
 				item.add(element);
+				element.addLine(l);
 			}
 		} else {
 			/* 
@@ -91,9 +87,9 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
 			 * The hash table does not have anything at the specified index
 			 * We create a new linked list at the index, and add the word + page
 			 */
-			this.table.put(element.hashCode(), new java.util.LinkedList<ConcordanceDataElement>());
-			this.table.get(element.hashCode()).push(element);
-			this.table.get(element.hashCode()).get(0).addPage(l);
+			this.table.put(hashcode, new java.util.LinkedList<ConcordanceDataElement>());
+			this.table.get(hashcode).push(element);
+			this.table.get(hashcode).get(0).addPage(l);
 		}
 	} 
 
@@ -110,10 +106,26 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
 		
 		// Loop (HashMap)
 		this.table.forEach((k, list) -> {
+			// Sort (LinkedList)
+			java.util.Collections.sort(list, new java.util.Comparator<ConcordanceDataElement>() {
+				@Override
+				public int compare(ConcordanceDataElement e1, ConcordanceDataElement e2) {
+					return java.text.Collator.getInstance().compare(e1.getWord(), e2.getWord());
+				}
+			});
+			
 			// Loop (LinkedList)
 			list.forEach((word) -> {
 				result.add(word.toString() + "\n");
 			});
+		});
+		
+		// Sort (Final Result)
+		java.util.Collections.sort(result, new java.util.Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				return java.text.Collator.getInstance().compare(s1, s2);
+			}
 		});
 		
 		// Return
@@ -128,7 +140,7 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
 	 * @throws None
 	 */
 	public int getTableSize() {
-		return this.table.size();
+		return this.size;
 	}
 	
 	/**

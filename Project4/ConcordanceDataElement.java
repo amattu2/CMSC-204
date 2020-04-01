@@ -10,16 +10,16 @@ public class ConcordanceDataElement implements java.lang.Comparable<ConcordanceD
 	// Class Variables
 	protected String word;
 	protected java.util.LinkedList<Integer> lines;
-	
+
 	/**
 	 * Standard constructor
 	 * 
 	 * @param String word
 	 * @throws None
 	 */
-	public ConcordanceDataElement(String w) {
+	public ConcordanceDataElement(String w) {	
 		// Variables
-		this.word = w.trim().toLowerCase().replace("?", "").replace(".", "").replace(";", "").replace("\"", "");
+		this.word = w.trim().toLowerCase().replaceAll("[\\?\\+\\,\\.\\!\\_]", "");
 		this.lines = new java.util.LinkedList<Integer>();
 	}
 	
