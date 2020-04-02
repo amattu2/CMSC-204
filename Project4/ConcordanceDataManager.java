@@ -18,6 +18,7 @@ public class ConcordanceDataManager implements ConcordanceDataManagerInterface {
 		// Variables
 		ConcordanceDataStructure structure = new ConcordanceDataStructure(text.split(" ").length);
 		String[] lines = text.split("\n");
+		java.util.ArrayList<String> result = new java.util.ArrayList<String>();
 		
 		// Loops
 		for (int line = 0; line < lines.length; line++) {
@@ -25,9 +26,12 @@ public class ConcordanceDataManager implements ConcordanceDataManagerInterface {
 				structure.add(word, line + 1);
 			}
 		}
+		for (String line : structure.showAll()) {
+			result.add(line + "\n");
+		}
 		
 		// Return
-		return structure.showAll();
+		return result;
 	}
 	
 	/**
