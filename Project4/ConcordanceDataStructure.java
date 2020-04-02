@@ -14,6 +14,7 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
     protected int minimum = 2;
     protected java.util.ArrayList<String> blocked = new java.util.ArrayList<String>(java.util.Arrays.asList("and", "the"));
     protected boolean found = false;
+    protected boolean initialized = false;
     
     /**
      * Class Constructor
@@ -37,6 +38,7 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
 	public ConcordanceDataStructure(int s) {
 		this.size = s;
 		this.table = new java.util.Hashtable<Integer, java.util.LinkedList<ConcordanceDataElement>>(s, (float) this.factor);
+		this.initialized = true;
 	}	 
 
 	/**
@@ -58,11 +60,6 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
 		if (element.getWord().length() <= this.minimum) { return; }
 		if (this.blocked.indexOf(element.getWord()) >= 0) { return; }
 		if (this.table.containsKey(hashcode) == true) {
-			/*
-			 * Notes:
-			 * The has table already has a word at the specified index
-			 * We have to find the correct word, and add the new page to that word
-			 */
 			// Variables
 			this.found = false;
 			java.util.LinkedList<ConcordanceDataElement> item = this.table.get(hashcode);
@@ -82,11 +79,6 @@ public class ConcordanceDataStructure implements ConcordanceDataStructureInterfa
 				element.addLine(l);
 			}
 		} else {
-			/* 
-			 * Notes:
-			 * The hash table does not have anything at the specified index
-			 * We create a new linked list at the index, and add the word + page
-			 */
 			this.table.put(hashcode, new java.util.LinkedList<ConcordanceDataElement>());
 			this.table.get(hashcode).push(element);
 			this.table.get(hashcode).get(0).addPage(l);
