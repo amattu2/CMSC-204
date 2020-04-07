@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="Project1"/>
+	<classpathentry kind="src" path="Project5"/>
 	<classpathentry kind="src" path="Project4"/>
 	<classpathentry kind="src" path="Lab6"/>
 	<classpathentry kind="src" path="Project3"/>
