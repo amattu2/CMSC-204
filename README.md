@@ -5,7 +5,7 @@ This is a repo for all projects and labs within the CMSC204 Computer Science tra
 N/A
 
 # Notes
-N/A
+Labs 1, 6, 7, 8, 9, 10 were written labs and not code based.
 
 # Requirements & Dependencies
 N/A
