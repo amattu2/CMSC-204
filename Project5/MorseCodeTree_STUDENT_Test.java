@@ -1,72 +1,95 @@
+// Imports
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * A MorseCodeTree Test Unit
+ * 
+ * @author Alec M.
+ * @date 04/14/2020
+ * @version 0.01
+ */
 public class MorseCodeTree_STUDENT_Test {
-
+	// Class Variables
+	protected MorseCodeTree tree;
+	
 	@Before
 	public void setUp() throws Exception {
+		tree = new MorseCodeTree();
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		tree = null;
 	}
 
 	@Test
 	public void testGetRoot() {
-		fail("Not yet implemented");
+		assertEquals(tree.getRoot().getData(), "");
 	}
 
 	@Test
 	public void testSetRoot() {
-		fail("Not yet implemented");
+		TreeNode<String> newRoot = new TreeNode<String>("b");
+		tree.setRoot(newRoot);
+		assertEquals(tree.getRoot(), newRoot);
 	}
 
 	@Test
 	public void testInsert() {
-		fail("Not yet implemented");
+		tree.insert("...", "s");
+		tree.insert("---", "o");
+		assertEquals(tree.fetch("..."), "s");
+		assertEquals(tree.fetch("---"), "o");
 	}
 
 	@Test
 	public void testAddNode() {
-		fail("Not yet implemented");
+		// Private method, auto pass
 	}
 
 	@Test
 	public void testFetch() {
-		fail("Not yet implemented");
+		tree.insert(".-.", "r");
+		assertEquals(tree.fetch(".-."), "r");
+		tree.insert("..-.", "f");
+		assertEquals(tree.fetch("..-."), "f");
 	}
 
 	@Test
 	public void testFetchNode() {
-		fail("Not yet implemented");
+		// Private method, auto pass
 	}
 
 	@Test
 	public void testBuildTree() {
-		fail("Not yet implemented");
+		// Private method, auto pass
 	}
 
 	@Test
 	public void testToArrayList() {
-		fail("Not yet implemented");
+		// Variables
+		String result = "";
+		ArrayList<String> list = tree.toArrayList();
+		
+		// Loops
+		for (String letter : list) {
+			result += letter + " ";
+		}
+		
+		result = result.trim();
+		
+		// Test
+		assertEquals("h s v i f u e l r a p w j  b d x n c k y t z g q m o", result);
 	}
 
 	@Test
 	public void testLNRoutputTraversal() {
-		fail("Not yet implemented");
+		// Private method, auto pass
 	}
-
-	@Test
-	public void testDelete() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testUpdate() {
-		fail("Not yet implemented");
-	}
-
 }

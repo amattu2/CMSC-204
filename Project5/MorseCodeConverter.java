@@ -40,6 +40,9 @@ public class MorseCodeConverter {
 	}
 
 	public static String convertToEnglish(java.io.File file) throws java.io.FileNotFoundException {
+		// Checks
+		if (file == null) { throw new java.io.FileNotFoundException("File provided was null"); }
+		
 		// Variables
 		java.util.ArrayList<String> lines = new java.util.ArrayList<String>();
 		java.util.Scanner scanner = new java.util.Scanner(file);

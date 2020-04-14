@@ -29,7 +29,7 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
 	@Override
 	public LinkedConverterTreeInterface<String> insert(String code, String letter) {
 		// Add
-		this.addNode(this.root, code, letter);
+		this.addNode(this.root, code, letter.toLowerCase());
 		
 		// Return
 		return this;
