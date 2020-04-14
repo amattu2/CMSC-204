@@ -189,9 +189,7 @@ public class MorseCodeTree implements LinkedConverterTreeInterface<String> {
 	public void LNRoutputTraversal(TreeNode<String> node, java.util.ArrayList<String> list) {
 		// Checks
 		if (node == null) { return; }
-		
-		System.out.println("LNR: " + node.getData());
-		
+
 		// Sort
 		this.LNRoutputTraversal(node.getLeft(), list);
 		list.add(node.getData());
