@@ -9,7 +9,9 @@ public class Question4 {
 	 * 
 	 * My plan is to use an arraylist for the properly spelled words and iterate through all of the
 	 * words in the file that needs to be spellchecked. If the word does not appear in the arraylist
-	 * then we can assume that the word is incorrectly spelled or some unknown variant.
+	 * then we can assume that the word is incorrectly spelled or some unknown variant. I will be using
+	 * a static function readFile to parse the file, since it's a cleaner solution than using the main
+	 * function
 	 */
 	
 	/**
@@ -42,7 +44,7 @@ public class Question4 {
 		// find incorrectly spelled words
 		for (String word : input) {
 			// Checks
-			if (!words.contains(word)) {
+			if (words.contains(word) == false) {
 				System.out.println(word + " is misspelled");
 			}
 		}
@@ -59,11 +61,12 @@ public class Question4 {
 			File file = new File(filename);
 			ArrayList<String> lines = new ArrayList<String>();
 			Scanner scanner = new Scanner(file);
-		
+
 			while (scanner.hasNext()) {
 				lines.add(scanner.nextLine());
 			}
 			
+			scanner.close();
 			return lines;
 		} catch (Exception e) { return null; }
 	}

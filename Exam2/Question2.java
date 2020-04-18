@@ -65,7 +65,7 @@ public class Question2 {
 			for (int i = 0; i < this.table.length; i++) {
 				if (this.table[i] != null && this.table[i] != "" && this.table[i].equals(value)) {
 					foundIndex = i; // found element at position i
-					this.table[i] = ""; // erase value
+					this.table[i] = ""; // "delete" value
 					break; // end loop
 				}
 			}

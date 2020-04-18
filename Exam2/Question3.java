@@ -11,13 +11,13 @@ public class Question3 {
 		
 		// Check all items in set a
 		for (Object item : a) {
-			if (b.contains(item)) {
+			if (b.contains(item) && intersected.contains(item) == false) { // prevent duplicates
 				intersected.add(item);
 			}
 		}
 		// Check all items in set b
 		for (Object item : b) {
-			if (a.contains(item)) {
+			if (a.contains(item) && intersected.contains(item) == false) { // prevent duplicates of intersected items
 				intersected.add(item);
 			}
 		}
