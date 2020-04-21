@@ -37,16 +37,15 @@ public class CarQueue {
 		class Runner implements Runnable {
 			@Override
 			public void run() {
-				// Add items
-				for (int i = 0; i < 6; i++) {
-					// Add to queue
+				while (true) {
+					// Add New Item
 					queue.add(random.nextInt(4));
-				}
-				
-				// Pause next item
-				try {
-					Thread.sleep(1000);
-				} catch(Exception e) {};				
+					
+					// Pause next item
+					try {
+						Thread.sleep(1000);
+					} catch(Exception e) {};
+				}				
 			}
 		}
 		
