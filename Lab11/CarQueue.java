@@ -21,27 +21,41 @@ public class CarQueue {
 	public CarQueue() {
 		// Loops
 		for (int i = 0; i < 6; i++) {
-			this.queue.add(this.random.nextInt());
+			this.queue.add(this.random.nextInt(4));
 		}
 	}
 	
 	/**
+	 * Add More Directions To Queue
 	 * 
+	 * @param None
+	 * @return None
+	 * @throws None
 	 */
 	public void addToQueue() {
-		protected java.util.Queue<Integer> queue = new java.util.ArrayDeque<>();
-		protected java.util.Random random = new java.util.Random();
-		
-		// 
-		class Ops implements Runnable {
+		// Private Thread Class
+		class Runner implements Runnable {
 			@Override
 			public void run() {
-				for (int i = 0; i < 4; i++) {
-					super.queue.add(this.random.nextInt());
+				// Add items
+				for (int i = 0; i < 6; i++) {
+					// Add to queue
+					queue.add(random.nextInt(4));
 				}
+				
+				// Pause next item
+				try {
+					Thread.sleep(1000);
+				} catch(Exception e) {};				
 			}
 		}
 		
+		// Variables
+		Runner r = new Runner();
+		Thread t = new Thread(r);
+		
+		// Start
+		t.start();
 	}
 
 	/**
@@ -52,6 +66,10 @@ public class CarQueue {
 	 * @throws None
 	 */
 	public int deleteQueue() {
+		// Checks
+		if (this.queue.isEmpty()) // Queue is empty, add items
+			this.addToQueue();
+		
 		return this.queue.isEmpty() == false ? this.queue.remove() : 0;
 	}
 }
