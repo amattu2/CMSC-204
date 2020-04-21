@@ -35,15 +35,19 @@ public class CarPanel extends JComponent {
 						switch (carQueue.deleteQueue()) {
 							case 0: // UP
 								y = y <= 10 ? 0 : y-10;
+								System.out.println("Received UP command");
 								break;
 							case 1: // DOWN
 								y = y >= 390 ? 400 : y+10;
+								System.out.println("Received DOWN command");
 								break;
 							case 2: // RIGHT
 								x = x >= 290 ? 300 : x+10;
+								System.out.println("Received RIGHT command");
 								break;
 							case 3: // LEFT
 								x = x <= 10 ? 0 : x-10;
+								System.out.println("Received LEFT command");
 								break;
 						}
 
