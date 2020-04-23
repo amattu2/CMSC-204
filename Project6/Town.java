@@ -6,15 +6,35 @@
  * @version 0.01a
  * @see Town.html
  */
-public class Town {
+public class Town implements java.lang.Comparable<Town> {
 
-	public Town(String string) {
-		// TODO Auto-generated constructor stub
+	public Town(String n) {
+
 	}
 
+	public Town(Town t) {
+		
+	}
+	
 	public String getName() {
-		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public int hashcode() {
+		return 0;
+	}
+	
+	public String toString() {
+		return null;
+	}
+
+	public boolean equals(Town t) {
+		return false;
+	}
+	
+	@Override
+	public int compareTo(Town t) {
+		return 0;
 	}
 
 }
