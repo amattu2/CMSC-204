@@ -1,12 +1,9 @@
-import java.io.File;
-import java.util.ArrayList;
-
 /**
  * A town i/o manager class
  * 
  * @author Alec M.
- * @date 04/23/2020
- * @version 0.01b
+ * @date 04/24/2020
+ * @version 0.01c
  * @see TownGraphManagerInterface.java
  */
 public class TownGraphManager implements TownGraphManagerInterface {
@@ -42,7 +39,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	}
 
 	@Override
-	public ArrayList<String> allRoads() {
+	public java.util.ArrayList<String> allRoads() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -60,13 +57,13 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	}
 
 	@Override
-	public ArrayList<String> allTowns() {
+	public java.util.ArrayList<String> allTowns() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<String> getPath(String town1, String town2) {
+	public java.util.ArrayList<String> getPath(String town1, String town2) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -77,7 +74,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
 		return null;
 	}
 
-	public void populateTownGraph(File selectedFile) throws java.io.FileNotFoundException, java.io.IOException {
+	public void populateTownGraph(java.io.File selectedFile) throws java.io.FileNotFoundException, java.io.IOException {
 		// TODO Auto-generated method stub
 		
 	}
