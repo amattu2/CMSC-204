@@ -78,5 +78,4 @@ public class TownGraphManager implements TownGraphManagerInterface {
 		// TODO Auto-generated method stub
 		
 	}
-
 }
