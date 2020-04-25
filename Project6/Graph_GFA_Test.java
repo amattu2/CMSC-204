@@ -20,7 +20,7 @@ public class Graph_GFA_Test {
 
 	@Before
 	public void setUp() throws Exception {
-		 graph = new Graph();
+		 graph = new TownGraph();
 		  town = new Town[3];
 		  
 		  for (int i = 0; i < 3; i++) {

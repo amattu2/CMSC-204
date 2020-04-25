@@ -6,7 +6,7 @@
  * @version 0.01b
  * @see GraphInterface.java
  */
-public class Graph implements GraphInterface<Town, Road> {
+public class TownGraph implements GraphInterface<Town, Road> {
 
 	@Override
 	public Road getEdge(Town sourceVertex, Town destinationVertex) {

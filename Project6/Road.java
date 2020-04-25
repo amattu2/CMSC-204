@@ -1,5 +1,5 @@
 /**
- * A road between town data class
+ * A road between towns data class
  * 
  * @author Alec M.
  * @date 04/24/2020

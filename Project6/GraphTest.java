@@ -20,7 +20,7 @@ public class GraphTest {
 
 	@Before
 	public void setUp() throws Exception {
-		 graph = new Graph();
+		 graph = new TownGraph();
 		  town = new Town[12];
 		  
 		  for (int i = 1; i < 12; i++) {
