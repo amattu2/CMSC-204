@@ -76,7 +76,7 @@ public class Town implements java.lang.Comparable<Town> {
 	 * @throws None
 	 */
 	public boolean equals(Town t) {
-		return false;
+		return this.name.toLowerCase().equals(t.name.toLowerCase());
 	}
 	
 	/**
@@ -90,6 +90,6 @@ public class Town implements java.lang.Comparable<Town> {
 	 */
 	@Override
 	public int compareTo(Town t) {
-		return this.name.equals(t.name) ? 0 : 1;
+		return this.name.toLowerCase().equals(t.name.toLowerCase()) ? 0 : 1;
 	}
 }
