@@ -2,13 +2,13 @@
  * A town representation data class
  * 
  * @author Alec M.
- * @date 04/24/2020
- * @version 0.01b
+ * @date 04/25/2020
+ * @version 0.02a
  * @see Town.html
  */
 public class Town implements java.lang.Comparable<Town> {
 	// Class Variables
-	private String name = "";
+	protected String name = "";
 	
 	/**
 	 * Class Constructor

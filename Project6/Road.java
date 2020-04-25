@@ -8,10 +8,10 @@
  */
 public class Road implements java.lang.Comparable<Road> {
 	// Class Variables
-	private Town source = null;
-	private Town destination = null;
-	private String name = "";
-	private int weight = 0;
+	protected Town source = null;
+	protected Town destination = null;
+	protected String name = "";
+	protected int weight = 0;
 	
 	/**
 	 * Class Constructor
