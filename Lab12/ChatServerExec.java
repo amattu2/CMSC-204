@@ -1,8 +1,4 @@
-
-
-
-
-
+// Imports
 import java.io.PrintWriter;
 import java.util.HashSet;
 
@@ -33,8 +29,11 @@ public class ChatServerExec {
      * @param port
      */
    public void startServer() {
-    	ChatServer server = new ChatServer(CHAT_ROOM_PORT);
-    	//TODO STUDENT: start a thread with server in it
-    	
+		// Variables
+		ChatServer server = new ChatServer(CHAT_ROOM_PORT);
+		Thread t = new Thread(server);
+		
+		// Run thread
+		t.run(); 
     }
 }

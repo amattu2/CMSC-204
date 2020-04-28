@@ -28,6 +28,7 @@ public class ChatClient implements Runnable, ChatClientInterface {
     TextArea messageArea = new TextArea();
     Stage stage;
     String myScreenName = "";
+    Socket socket;
     
 	ChatClient(int port) {
 		CHAT_ROOM_PORT = port;
@@ -84,11 +85,11 @@ public class ChatClient implements Runnable, ChatClientInterface {
      */
     public void run() {
 		try {
-			//TODO STUDENT: create a client socket with server address and server port
+			// Variables
+			socket = new Socket(this.getServerAddress(), this.getServerPort()); //TODO STUDENT: create a client socket with server address and server port
+			in = new BufferedReader(new InputStreamReader(socket.getInputStream())); //TODO STUDENT: setup input and output streams
+			out = new PrintWriter(socket.getOutputStream(), true); //TODO STUDENT: setup input and output streams
 
-			//Make connection and initialize streams;
-			//TODO STUDENT: setup input and output streams
-			
 	        // Process all messages from server, according to the protocol.
 	        while (true) {
 	            String line = in.readLine();
