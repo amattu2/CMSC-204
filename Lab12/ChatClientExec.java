@@ -40,7 +40,7 @@ public class ChatClientExec implements ChatClientExecInterface {
     	ChatClient client = new ChatClient(CHAT_ROOM_PORT);
     	Thread t = new Thread(client);
     	
-    	t.run(); // TODO STUDENT: create a thread with client in it
+    	t.start(); // TODO STUDENT: create a thread with client in it
     }
 
 	public static double getClientX() {

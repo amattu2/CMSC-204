@@ -34,6 +34,6 @@ public class ChatServerExec {
 		Thread t = new Thread(server);
 		
 		// Run thread
-		t.run(); 
+		t.start(); 
     }
 }
