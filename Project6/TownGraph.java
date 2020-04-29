@@ -10,6 +10,7 @@ public class TownGraph implements GraphInterface<Town, Road> {
 	// Class Variables
 	protected java.util.Set<Town> towns = new java.util.HashSet<Town>();
 	protected java.util.Set<Road> roads = new java.util.HashSet<Road>();
+	protected java.util.Map<Town, Road> distanceMap = new java.util.HashMap<Town, Road>();
 	
 	/**
 	 * Add Edge (Road) To Graph
@@ -25,7 +26,7 @@ public class TownGraph implements GraphInterface<Town, Road> {
 	public Road addEdge(Town s, Town d, int w, String n) throws IllegalArgumentException, NullPointerException {
 		// Checks
 		if (s == null || d == null) { throw new NullPointerException("Vertex provided is null"); }
-		// TODO: Supposed to throw an error for ??
+		if (this.towns.contains(s) == false || this.towns.contains(d) == false) { throw new IllegalArgumentException("Vertex provided is not in the graph"); }
 		
 		// Variables
 		Road result = new Road(s, d, w, n);
@@ -85,12 +86,12 @@ public class TownGraph implements GraphInterface<Town, Road> {
 		for (Road r : this.roads) {
 			// Checks
 			if (r.contains(s) == false || r.contains(d) == false) { continue; }
-			
+
 			// Found Road
 			result = r;
 			break;
 		}
-		
+
 		// Return
 		return result;
 	}
@@ -158,7 +159,7 @@ public class TownGraph implements GraphInterface<Town, Road> {
 	 * @throws None
 	 */
 	@Override
-	public boolean containsVertex(Town v) {
+	public boolean containsVertex(Town v) {		
 		return this.towns.contains(v);
 	}
 
@@ -213,11 +214,14 @@ public class TownGraph implements GraphInterface<Town, Road> {
 
 	@Override
 	public java.util.ArrayList<String> shortestPath(Town s, Town d) {
-		return null; // TODO
+		return null;
 	}
 
 	@Override
-	public void dijkstraShortestPath(Town sv) {
-		// TODO
+	public void dijkstraShortestPath(Town v) {	
+		// https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-in-java-using-priorityqueue/
+		// calculate the shortest distance between the source (shortestPath.s) and all endpoints
+		// store everything in the hashmap and only return the results containing shortestPath.d
+		// use getEdge(s, d) to get roadname
 	}
 }
