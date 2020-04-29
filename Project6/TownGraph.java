@@ -2,8 +2,8 @@
  * A graph manager class
  * 
  * @author Alec M.
- * @date 04/25/2020
- * @version 0.01c
+ * @date 04/29/2020
+ * @version 0.02a
  * @see GraphInterface.java
  */
 public class TownGraph implements GraphInterface<Town, Road> {
@@ -219,6 +219,7 @@ public class TownGraph implements GraphInterface<Town, Road> {
 
 	@Override
 	public void dijkstraShortestPath(Town v) {	
+		// https://users.cs.fiu.edu/~kraynek/COP3530-examples/Graphs/WeightedGraph.java
 		// https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-in-java-using-priorityqueue/
 		// calculate the shortest distance between the source (shortestPath.s) and all endpoints
 		// store everything in the hashmap and only return the results containing shortestPath.d
