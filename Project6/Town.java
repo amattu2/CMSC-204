@@ -2,8 +2,8 @@
  * A town representation data class
  * 
  * @author Alec M.
- * @date 04/25/2020
- * @version 0.02a
+ * @date 04/30/2020
+ * @version 0.02b
  * @see Town.html
  */
 public class Town implements java.lang.Comparable<Town> {
@@ -53,7 +53,8 @@ public class Town implements java.lang.Comparable<Town> {
 	 * @return Integer hashcode
 	 * @throws None
 	 */
-	public int hashcode() {
+	@Override
+	public int hashCode() {
 		return this.name.hashCode();
 	}
 	
@@ -75,8 +76,9 @@ public class Town implements java.lang.Comparable<Town> {
 	 * @return Boolean equal
 	 * @throws None
 	 */
-	public boolean equals(Town t) {
-		return this.name.toLowerCase().equals(t.name.toLowerCase());
+	@Override
+	public boolean equals(Object t) {
+		return t == this || this.name.toLowerCase().equals(((Town) t).name.toLowerCase());
 	}
 	
 	/**

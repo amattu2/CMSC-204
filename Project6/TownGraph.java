@@ -26,8 +26,8 @@ public class TownGraph implements GraphInterface<Town, Road> {
 	public Road addEdge(Town s, Town d, int w, String n) throws IllegalArgumentException, NullPointerException {
 		// Checks
 		if (s == null || d == null) { throw new NullPointerException("Vertex provided is null"); }
-		if (this.towns.contains(s) == false || this.towns.contains(d) == false) { throw new IllegalArgumentException("Vertex provided is not in the graph"); }
-		
+		if (this.containsVertex(s) == false || this.containsVertex(d) == false) { throw new IllegalArgumentException("Vertex provided is not in the graph"); }
+
 		// Variables
 		Road result = new Road(s, d, w, n);
 		
@@ -93,7 +93,7 @@ public class TownGraph implements GraphInterface<Town, Road> {
 			result = r;
 			break;
 		}
-
+		
 		// Return
 		return result;
 	}
@@ -161,8 +161,20 @@ public class TownGraph implements GraphInterface<Town, Road> {
 	 * @throws None
 	 */
 	@Override
-	public boolean containsVertex(Town v) {		
-		return this.towns.contains(v);
+	public boolean containsVertex(Town v) {
+		// Variables
+		boolean result = false;
+
+		// Loops
+		for (Town t : this.towns) {
+			if (v.equals(t)) {
+				result = true;
+				break;
+			}
+		}
+		
+		// Return
+		return result;
 	}
 
 	/**

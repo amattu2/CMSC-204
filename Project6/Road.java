@@ -2,8 +2,8 @@
  * A road between towns data class
  * 
  * @author Alec M.
- * @date 04/24/2020
- * @version 0.01b
+ * @date 04/30/2020
+ * @version 0.02a
  * @see Road.html
  */
 public class Road implements java.lang.Comparable<Road> {
@@ -100,7 +100,8 @@ public class Road implements java.lang.Comparable<Road> {
 	 * @return Integer hash code
 	 * @throws None
 	 */
-	public int hashcode() {
+	@Override
+	public int hashCode() {
 		return this.name.hashCode();
 	}
 	
@@ -111,9 +112,11 @@ public class Road implements java.lang.Comparable<Road> {
 	 * @return String stringified
 	 * @throws None
 	 */
+	@Override
 	public String toString() {
-		return this.name +": "+ this.source.toString() + " -> " + this.destination.toString();
+		return this.name +" ["+ Integer.toString(this.weight) +"]: "+ this.source.toString() + " -> " + this.destination.toString();
 	}
+	
 	/**
 	 * Road Contains Town
 	 * 
@@ -133,13 +136,17 @@ public class Road implements java.lang.Comparable<Road> {
 	 * @return Boolean identical
 	 * @throws None
 	 */
-	public boolean equals(Road r) {
+	@Override
+	public boolean equals(Object r) {	
 		// Variables
-		boolean smatch = this.source.equals(r.source) || this.source.equals(r.destination);
-		boolean dmatch = this.destination.equals(r.source) || this.destination.equals(r.destination);
+		boolean smatch = this.source.equals(((Road) r).source) || this.source.equals(((Road) r).destination);
+		boolean dmatch = this.destination.equals(((Road) r).source) || this.destination.equals(((Road) r).destination);
+		boolean result = r == this || (smatch && dmatch);
+		
+		System.out.println(this + " equals " + r + "? " + result);
 		
 		// Return
-		return smatch && dmatch;
+		return result;
 	}
 	
 	/**
