@@ -45,6 +45,8 @@ public class TownGraph implements GraphInterface<Town, Road> {
 	 * @param Town town2
 	 * @param Integer weight||-1
 	 * @param String name||null
+	 * @return Road result
+	 * @throws None
 	 */
 	@Override
 	public Road removeEdge(Town s, Town d, int w, String n) {

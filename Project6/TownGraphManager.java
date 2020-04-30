@@ -2,8 +2,8 @@
  * A town i/o manager class
  * 
  * @author Alec M.
- * @date 04/29/2020
- * @version 0.01c
+ * @date 04/30/2020
+ * @version 0.02a
  * @see TownGraphManagerInterface.java
  */
 public class TownGraphManager implements TownGraphManagerInterface {
@@ -91,45 +91,115 @@ public class TownGraphManager implements TownGraphManagerInterface {
 		return this.graph.containsVertex(new Town(s));
 	}
 
+	/**
+	 * Remove Town From Graph
+	 * 
+	 * @param String source name
+	 * @return Boolean success
+	 * @throws None
+	 */
 	@Override
-	public boolean deleteTown(String v) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteTown(String s) {
+		return this.graph.removeVertex(new Town(s));
 	}
 
-	
+	/**
+	 * Get Road Between Towns
+	 * 
+	 * @param String source
+	 * @param String destination
+	 * @return Boolean contains road
+	 * @throws None
+	 */
 	@Override
-	public boolean containsRoadConnection(String town1, String town2) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean containsRoadConnection(String s, String d) {
+		return this.graph.containsEdge(new Town(s), new Town(d));
 	}
 	
+	/**
+	 * Remove Road Between Towns
+	 * 
+	 * @param String source
+	 * @param String destination
+	 * @param String road name
+	 * @return Boolean success
+	 * @throws None
+	 */
 	@Override
-	public boolean deleteRoadConnection(String town1, String town2, String road) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteRoadConnection(String s, String d, String n) {
+		return this.graph.removeEdge(new Town(s), new Town(d), -1, n) == null ? false : true;
 	}
 
+	/**
+	 * Get Sorted Road List
+	 * 
+	 * @param None
+	 * @return ArrayList<String> result
+	 * @throws None
+	 */
 	@Override
 	public java.util.ArrayList<String> allRoads() {
-		// TODO Auto-generated method stub
-		return null;
+		// Variables
+		java.util.ArrayList<String> result = new java.util.ArrayList<String>();
+		java.util.Set<Road> roads = this.graph.edgeSet();
+		
+		// Loops
+		for (Road r : roads) {
+			result.add(r.toString());
+		}
+		
+		// Sort
+		java.util.Collections.sort(result, new java.util.Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				return java.text.Collator.getInstance().compare(s1, s2);
+			}
+		});
+		
+		// Return
+		return result;
 	}
 	
+	/**
+	 * Get Sorted Town List
+	 * 
+	 * @param None
+	 * @return ArrayList<String> result
+	 * @throws None
+	 */
 	@Override
 	public java.util.ArrayList<String> allTowns() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public java.util.ArrayList<String> getPath(String town1, String town2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void populateTownGraph(java.io.File selectedFile) throws java.io.FileNotFoundException, java.io.IOException {
-		// TODO Auto-generated method stub
+		// Variables
+		java.util.ArrayList<String> result = new java.util.ArrayList<String>();
+		java.util.Set<Town> towns = this.graph.vertexSet();
 		
+		// Loops
+		for (Town t : towns) {
+			result.add(t.toString());
+		}
+		
+		// Sort
+		java.util.Collections.sort(result, new java.util.Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				return java.text.Collator.getInstance().compare(s1, s2);
+			}
+		});
+		
+		// Return
+		return result;
+	}
+
+	/**
+	 * Get Shortest Paths To Town
+	 * 
+	 * @param String source name
+	 * @param String destination name
+	 * @return ArrayList<String> paths
+	 * @throws None
+	 */
+	@Override
+	public java.util.ArrayList<String> getPath(String s, String d) {
+		return this.graph.shortestPath(new Town(s), new Town(d));
 	}
 }
