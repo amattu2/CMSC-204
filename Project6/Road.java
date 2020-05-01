@@ -114,7 +114,7 @@ public class Road implements java.lang.Comparable<Road> {
 	 */
 	@Override
 	public String toString() {
-		return this.name +" ["+ Integer.toString(this.weight) +"]: "+ this.source.toString() + " -> " + this.destination.toString();
+		return this.name;
 	}
 	
 	/**
@@ -142,8 +142,6 @@ public class Road implements java.lang.Comparable<Road> {
 		boolean smatch = this.source.equals(((Road) r).source) || this.source.equals(((Road) r).destination);
 		boolean dmatch = this.destination.equals(((Road) r).source) || this.destination.equals(((Road) r).destination);
 		boolean result = r == this || (smatch && dmatch);
-		
-		System.out.println(this + " equals " + r + "? " + result);
 		
 		// Return
 		return result;
