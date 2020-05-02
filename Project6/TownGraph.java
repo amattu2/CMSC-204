@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Set;
 
 /**
  * A graph manager class
@@ -253,4 +255,117 @@ public class TownGraph implements GraphInterface<Town, Road> {
 		return this.towns;
 	}
 
+	@Override
+	public ArrayList<String> shortestPath(Town sourceVertex, Town destinationVertex) {
+		path.clear();
+		visitedTowns = new HashSet();
+		unVisitedTowns = new HashSet(setOfTowns);
+		Town townS,townD;
+		townS =townD=null;
+		for(Town t : setOfTowns)
+		{
+			if(t.getName().equals(sourceVertex.getName())) {
+				townS =t;
+				townS.setAdjecentTowns(t.getAdjecentTowns());
+			}
+			if(t.getName().equals(destinationVertex.getName())) {
+				townD =t;
+			}
+
+		}
+		townS.setWeight(0);
+		visitedTowns.add(townS);
+		unVisitedTowns.remove(townS);
+		this.dijkstraShortestPath(townS);
+		for (Town t : unVisitedTowns) {
+			// if(t.getBackpath()!=null)
+//			 System.out.println(t.getBackpath());
+			// else
+//			System.out.println(t.getName().equals(townD.getName()));
+
+		}
+		getShortestPath(townS, townD);
+
+		Collections.reverse(path);
+		for (Town town : setOfTowns) {
+			town.resetPathVarbs();
+		}
+		return path;
+	}
+
+	private void getShortestPath(Town sourceVertex, Town destinationVertex) {
+		// Town_1 via Road_1 to Town_2 2 mi"
+		try {
+		Road tempRoad = getEdge(destinationVertex.getBackpath(), destinationVertex);
+		StringBuilder str = new StringBuilder();
+		str.append(destinationVertex.getBackpath().getName());
+		str.append(" via ");
+		str.append(tempRoad.getName());
+		str.append(" to ");
+		str.append(destinationVertex.getName());
+		str.append(" ");
+		str.append(tempRoad.getWeight());
+		str.append(" mi");
+
+		path.add(str.toString());
+		if (!(destinationVertex.getBackpath().equals(sourceVertex))) {
+			getShortestPath(sourceVertex, destinationVertex.getBackpath());
+
+		}}catch(NullPointerException e) {
+
+		path.clear();
+		path.add("No such path found");
+		}
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void dijkstraShortestPath(Town sourceVertex) {
+		Boolean finiding = false;
+		while (!unVisitedTowns.isEmpty() && !finiding) {
+			finiding = true;
+			int shortest = Integer.MAX_VALUE;
+			Town closestTown = null;
+			for (Town visitedTown : visitedTowns) {
+
+				Set<Town> adjTowns = visitedTown.getAdjecentTowns();
+
+				System.out.println("Adj towns " + adjTowns);
+				Set<Town> adjTownsUnVisited = new HashSet<>();
+				for (Town town : adjTowns) {
+					if (unVisitedTowns.contains(town)) {
+						adjTownsUnVisited.add(town);
+					}
+				}
+				for (Town unvisitedTown : adjTownsUnVisited) {
+					int totalWeight = getTotalWeight(unvisitedTown, visitedTown, sourceVertex);
+					if (totalWeight < shortest) {
+						shortest = totalWeight;
+
+						closestTown = unvisitedTown;
+
+						unvisitedTown.setBackpath(visitedTown);
+					}
+				}
+
+			}
+			if (closestTown != null) {
+				closestTown.setWeight(shortest);
+				visitedTowns.add(closestTown);
+				unVisitedTowns.remove(closestTown);
+				finiding = false;
+			}
+		}
+
+	}
+
+	private int getTotalWeight(Town unvisitedTown, Town visitedTown, Town sourceVertex) {
+		if (unvisitedTown.equals(sourceVertex))
+			return 0;
+
+		return visitedTown.getWeight() + getEdge(visitedTown, unvisitedTown).getWeight();
+	}
 }
