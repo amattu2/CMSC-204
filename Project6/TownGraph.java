@@ -224,4 +224,147 @@ public class TownGraph implements GraphInterface<Town, Road> {
 	public java.util.Set<Town> vertexSet() {
 		return this.towns;
 	}
+	
+	/**
+	 * Find Shortest Path Between Two Towns
+	 * 
+	 * @param Town source
+	 * @param Town destination
+	 * @return ArrayList<String> paths
+	 * @throws None
+	 */
+	@Override
+	public java.util.ArrayList<String> shortestPath(Town s, Town d) {
+		// Variables
+		this.dijkstraShortestPath(s);
+		java.util.ArrayList<String> result = new java.util.ArrayList<String>();
+		java.util.LinkedList<Town> paths = d.paths;
+		paths.add(d);
+		
+		// Loops
+		for (Town t : paths) {
+			String r = this.getPathDescription(s, t);
+			
+			System.out.println(r);
+			
+			result.add(r);
+		}
+		
+		// Return
+		return result;
+	}
+	
+	/**
+	 * Calculate Shortest Distance Between Source And Everything Else
+	 * 
+	 * @param Town source
+	 * @return None
+	 * @throws None
+	 */
+	@Override
+	public void dijkstraShortestPath(Town s) {
+		// Variables
+		java.util.Set<Town> checked = new java.util.HashSet<Town>();
+		java.util.Set<Town> unchecked = new java.util.HashSet<Town>();
+		s.distance = 0;
+		unchecked.add(s);
+		
+		// Loops
+		while (unchecked.isEmpty() == false) {
+			// Variables
+			Town t = this.getShortestPath(unchecked);
+			unchecked.remove(t);
+			
+			// Loops
+			for (java.util.Map.Entry<Town, Integer> e : t.towns.entrySet()) {
+				// Variables
+				Town k = e.getKey();
+				int distance = e.getValue();
+				
+				System.out.println(k);
+				
+				// Checks
+				if (checked.contains(k) == false) {
+					this.getShortestDistance(k, t, distance);
+					checked.add(k);
+				}
+			}
+			checked.add(t);
+		}
+	}
+	
+	/**
+	 * Calculate Shortest Distance Between Next Town
+	 * 
+	 * @param Set<Town> towns
+	 * @return Town result || null
+	 * @throws None
+	 */
+	protected Town getShortestPath(java.util.Set<Town> towns) {
+		// Variables
+		Town result = null;
+		int shortest = Integer.MAX_VALUE;
+		
+		// Loops
+		for (Town t : towns) {
+			if (t.distance < shortest) {
+				result = t;
+				shortest = t.distance;
+			} else {
+				System.out.println(t + "'s weight was greater than " + result);
+			}
+		}
+		
+		// Return
+		return result;
+	}
+	
+	/**
+	 * Calculate Minimum Distance Between Towns
+	 * 
+	 * @param Town source
+	 * @param Town destination
+	 * @param Integer weight
+	 */
+	protected void getShortestDistance(Town s, Town d, int w) {
+		// Checks
+		if ((d.distance + w) < s.distance) {
+			// Variables
+			s.distance = d.distance + w;
+			java.util.LinkedList<Town> list = new java.util.LinkedList<Town>(d.paths);
+			list.add(d);
+			s.paths = list;
+		}
+	}
+	
+	/**
+	 * Build Path Description
+	 * 
+	 * @param Town source
+	 * @param Town destination
+	 * @return String description
+	 * @throws None
+	 */
+	protected String getPathDescription(Town s, Town d) {
+		// Variables
+		String result = "";
+		Road r = this.getEdge(s, d);
+		
+		if (r == null) {
+			return "No such path between " + s.toString() + " and " + d.toString();
+		}
+		
+		// Build
+		result += s.getName();
+		result += " via ";
+		result += r.getName();
+		result += " to ";
+		result += d.getName();
+		result += " ";
+		result += r.getWeight();
+		result += " mi";
+		
+		// Return
+		return result;
+	}
 }
