@@ -10,7 +10,6 @@ public class TownGraph implements GraphInterface<Town, Road> {
 	// Class Variables
 	protected java.util.Set<Town> towns = new java.util.HashSet<Town>();
 	protected java.util.Set<Road> roads = new java.util.HashSet<Road>();
-	protected java.util.Map<Town, Road> distanceMap = new java.util.HashMap<Town, Road>();
 	
 	/**
 	 * Add Edge (Road) To Graph
@@ -224,19 +223,5 @@ public class TownGraph implements GraphInterface<Town, Road> {
 	@Override
 	public java.util.Set<Town> vertexSet() {
 		return this.towns;
-	}
-
-	@Override
-	public java.util.ArrayList<String> shortestPath(Town s, Town d) {
-		return null;
-	}
-
-	@Override
-	public void dijkstraShortestPath(Town v) {	
-		// https://users.cs.fiu.edu/~kraynek/COP3530-examples/Graphs/WeightedGraph.java
-		// https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-in-java-using-priorityqueue/
-		// calculate the shortest distance between the source (shortestPath.s) and all endpoints
-		// store everything in the hashmap and only return the results containing shortestPath.d
-		// use getEdge(s, d) to get roadname
 	}
 }

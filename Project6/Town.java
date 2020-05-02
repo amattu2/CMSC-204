@@ -9,6 +9,9 @@
 public class Town implements java.lang.Comparable<Town> {
 	// Class Variables
 	protected String name = "";
+	protected java.util.LinkedList<Town> paths = new java.util.LinkedList<Town>();
+	protected java.util.Map<Town, Integer> towns = new java.util.HashMap<Town, Integer>(); // Town, Distance
+	protected int distance = Integer.MAX_VALUE;
 	
 	/**
 	 * Class Constructor
