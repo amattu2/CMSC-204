@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * A town i/o manager class
  * 
@@ -218,5 +216,48 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	@Override
 	public java.util.ArrayList<String> getPath(String s, String d) {
 		return this.graph.shortestPath(this.getTown(s), this.getTown(d));
+	}
+
+	/**
+	 * Build Graph From File
+	 * 
+	 * @param File file
+	 * @return None
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	public void populateTownGraph(java.io.File file) throws java.io.FileNotFoundException, java.io.IOException {
+		// Variables
+		java.util.ArrayList<String> result = this.readFile(file);
+		
+		// Loops
+		for (String line : result) {
+			// Variables
+			String[] r = line.split(";");
+			String roadName = r[0].split(",")[0];
+			int weight = Integer.parseInt(r[0].split(",")[1]);
+			String source = r[1].trim();
+			String destination = r[2].trim();
+			
+			// Checks
+			this.addTown(source);
+			this.addTown(destination);
+			this.addRoad(source, destination, weight, roadName);
+		}
+	}
+	
+	protected java.util.ArrayList<String> readFile(java.io.File file) throws java.io.FileNotFoundException, java.io.IOException {
+		// Variables
+		java.util.ArrayList<String> result = new java.util.ArrayList<String>();
+		java.util.Scanner scanner = new java.util.Scanner(file);
+		
+		// Loops
+		while (scanner.hasNextLine()) {
+			result.add(scanner.nextLine());
+		}
+		
+		// Return
+		scanner.close();
+		return result;
 	}
 }
