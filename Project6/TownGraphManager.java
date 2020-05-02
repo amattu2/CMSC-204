@@ -1,14 +1,16 @@
+import java.util.ArrayList;
+
 /**
  * A town i/o manager class
  * 
  * @author Alec M.
- * @date 04/30/2020
- * @version 0.02a
+ * @date 05/02/2020
+ * @version 0.03b
  * @see TownGraphManagerInterface.java
  */
 public class TownGraphManager implements TownGraphManagerInterface {
 	// Class Variables
-	GraphInterface<Town, Road> graph = new TownGraph();
+	protected GraphInterface<Town, Road> graph = new TownGraph();
 	
 	/**
 	 * Add Road To Graph
@@ -23,11 +25,11 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	@Override
 	public boolean addRoad(String sName, String dName, int w, String n) {
 		// Variables
-		Town source = new Town(sName);
-		Town dest = new Town(dName);
+		Town source = this.getTown(sName);
+		Town dest = this.getTown(dName);
 		
 		// Checks
-		if (this.graph.containsVertex(source) == false || this.graph.containsVertex(dest) == false) {
+		if (source == null || dest == null) {
 			return false; 
 		}
 		if (this.graph.containsEdge(source, dest) == false) {
@@ -76,7 +78,22 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	 */
 	@Override
 	public Town getTown(String s) {
-		return this.containsTown(s) == true ? new Town(s) : null;
+		// Variables
+		java.util.Set<Town> towns = this.graph.vertexSet();
+		Town result = null;
+		
+		// Loops
+		for (Town t : towns) {
+			// Checks
+			if (t.getName().equals(s) == false) { continue; }
+			
+			// Found
+			result = t;
+			break;
+		}
+		
+		// Variables
+		return result;
 	}
 	
 	/**
@@ -88,7 +105,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	 */
 	@Override
 	public boolean containsTown(String s) {
-		return this.graph.containsVertex(new Town(s));
+		return this.getTown(s) == null ? false : true;
 	}
 
 	/**
@@ -100,7 +117,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	 */
 	@Override
 	public boolean deleteTown(String s) {
-		return this.graph.removeVertex(new Town(s));
+		return this.graph.removeVertex(this.getTown(s));
 	}
 
 	/**
@@ -113,7 +130,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	 */
 	@Override
 	public boolean containsRoadConnection(String s, String d) {
-		return this.graph.containsEdge(new Town(s), new Town(d));
+		return this.graph.containsEdge(this.getTown(s), this.getTown(d));
 	}
 	
 	/**
@@ -127,7 +144,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	 */
 	@Override
 	public boolean deleteRoadConnection(String s, String d, String n) {
-		return this.graph.removeEdge(new Town(s), new Town(d), -1, n) == null ? false : true;
+		return this.graph.removeEdge(this.getTown(s), this.getTown(d), -1, n) == null ? false : true;
 	}
 
 	/**
@@ -200,6 +217,6 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	 */
 	@Override
 	public java.util.ArrayList<String> getPath(String s, String d) {
-		return this.graph.shortestPath(new Town(s), new Town(d));
+		return this.graph.shortestPath(this.getTown(s), this.getTown(d));
 	}
 }

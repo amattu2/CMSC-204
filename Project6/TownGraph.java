@@ -1,22 +1,17 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Set;
-
 /**
  * A graph manager class
  * 
  * @author Alec M.
  * @date 05/02/2020
- * @version 0.03a
+ * @version 0.04b
  * @see GraphInterface.java
  */
 public class TownGraph implements GraphInterface<Town, Road> {
 	// Class Variables
 	protected java.util.Set<Town> towns = new java.util.HashSet<Town>();
 	protected java.util.Set<Road> roads = new java.util.HashSet<Road>();
+	protected java.util.Set<Town> checked;
+	protected java.util.Set<Town> unchecked;
 	
 	/**
 	 * Add Edge (Road) To Graph
@@ -35,11 +30,11 @@ public class TownGraph implements GraphInterface<Town, Road> {
 		if (this.containsVertex(s) == false || this.containsVertex(d) == false) { throw new IllegalArgumentException("Vertex provided is not in the graph"); }
 
 		// Variables
+		s.towns.add(d);
+		d.towns.add(s);
 		Road result = new Road(s, d, w, n);
 		
 		// Return
-		this.towns.add(s);
-		this.towns.add(d);
 		this.roads.add(result);
 		return result;
 	}
@@ -67,6 +62,8 @@ public class TownGraph implements GraphInterface<Town, Road> {
 			if (n != null && r.name.toLowerCase().equals(n.toLowerCase()) == false) { continue; }
 			
 			// Found
+			s.towns.remove(d);
+			d.towns.remove(s);
 			this.roads.remove(r);
 			result = r;
 			break;
@@ -137,7 +134,7 @@ public class TownGraph implements GraphInterface<Town, Road> {
 	}
 
 	/**
-	 * Remove Specified Vertex
+	 * Remove Specified Vertex (Town)
 	 * 
 	 * @param Town town
 	 * @return Boolean removed
@@ -155,31 +152,7 @@ public class TownGraph implements GraphInterface<Town, Road> {
 		}
 		
 		// Return
-		this.towns.remove(v);
-		return true;
-	}
-	
-	/**
-	 * Get Vertex In Graph
-	 * 
-	 * @param Town town
-	 * @return Town result || null
-	 * @throws None
-	 */
-	public Town getVertex(Town v) {
-		// Variables
-		Town result = null;
-
-		// Loops
-		for (Town t : this.towns) {
-			if (v.equals(t)) {
-				result = t;
-				break;
-			}
-		}
-		
-		// Return
-		return result;
+		return this.towns.remove(v);
 	}
 	
 	/**
@@ -255,117 +228,140 @@ public class TownGraph implements GraphInterface<Town, Road> {
 		return this.towns;
 	}
 
+	/**
+	 * Get Shortest Paths Between Two Towns
+	 * 
+	 * @param Town source
+	 * @param Town destination
+	 * @return ArrayList<String> paths
+	 * @throws None
+	 */
 	@Override
-	public ArrayList<String> shortestPath(Town sourceVertex, Town destinationVertex) {
-		path.clear();
-		visitedTowns = new HashSet();
-		unVisitedTowns = new HashSet(setOfTowns);
-		Town townS,townD;
-		townS =townD=null;
-		for(Town t : setOfTowns)
-		{
-			if(t.getName().equals(sourceVertex.getName())) {
-				townS =t;
-				townS.setAdjecentTowns(t.getAdjecentTowns());
-			}
-			if(t.getName().equals(destinationVertex.getName())) {
-				townD =t;
-			}
-
+	public java.util.ArrayList<String> shortestPath(Town s, Town d) {
+		// Variables
+		java.util.ArrayList<String> paths = new java.util.ArrayList<String>();
+		this.checked = new java.util.HashSet<Town>();
+		this.unchecked = new java.util.HashSet<Town>(this.towns);
+		this.checked.add(s);
+		this.unchecked.remove(s);
+		
+		// Loops
+		for (Town t : this.towns) {
+			t.reset();
 		}
-		townS.setWeight(0);
-		visitedTowns.add(townS);
-		unVisitedTowns.remove(townS);
-		this.dijkstraShortestPath(townS);
-		for (Town t : unVisitedTowns) {
-			// if(t.getBackpath()!=null)
-//			 System.out.println(t.getBackpath());
-			// else
-//			System.out.println(t.getName().equals(townD.getName()));
-
-		}
-		getShortestPath(townS, townD);
-
-		Collections.reverse(path);
-		for (Town town : setOfTowns) {
-			town.resetPathVarbs();
-		}
-		return path;
-	}
-
-	private void getShortestPath(Town sourceVertex, Town destinationVertex) {
-		// Town_1 via Road_1 to Town_2 2 mi"
-		try {
-		Road tempRoad = getEdge(destinationVertex.getBackpath(), destinationVertex);
-		StringBuilder str = new StringBuilder();
-		str.append(destinationVertex.getBackpath().getName());
-		str.append(" via ");
-		str.append(tempRoad.getName());
-		str.append(" to ");
-		str.append(destinationVertex.getName());
-		str.append(" ");
-		str.append(tempRoad.getWeight());
-		str.append(" mi");
-
-		path.add(str.toString());
-		if (!(destinationVertex.getBackpath().equals(sourceVertex))) {
-			getShortestPath(sourceVertex, destinationVertex.getBackpath());
-
-		}}catch(NullPointerException e) {
-
-		path.clear();
-		path.add("No such path found");
-		}
-
+		
+		// Reset Weight (From INF), Get/Sort Paths, Return
+		s.weight = 0;
+		this.dijkstraShortestPath(s);
+		this.buildPaths(paths, s, d);
+		java.util.Collections.reverse(paths);
+		return paths;
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Calculate Shortest Pathways From Source To XYZ
+	 * 
+	 * @param Town source
+	 * @return None
+	 * @throws None
 	 */
 	@Override
-	public void dijkstraShortestPath(Town sourceVertex) {
-		Boolean finiding = false;
-		while (!unVisitedTowns.isEmpty() && !finiding) {
-			finiding = true;
-			int shortest = Integer.MAX_VALUE;
-			Town closestTown = null;
-			for (Town visitedTown : visitedTowns) {
-
-				Set<Town> adjTowns = visitedTown.getAdjecentTowns();
-
-				System.out.println("Adj towns " + adjTowns);
-				Set<Town> adjTownsUnVisited = new HashSet<>();
-				for (Town town : adjTowns) {
-					if (unVisitedTowns.contains(town)) {
-						adjTownsUnVisited.add(town);
-					}
+	public void dijkstraShortestPath(Town s) {
+		// Variables
+		Boolean found = false;
+		
+		// Loops
+		while (found == false && this.unchecked.isEmpty() == false) {
+			// Variables
+			found = true; // default
+			Town shortestTown = null;
+			int shortestDistance = Integer.MAX_VALUE;
+			
+			// Loops
+			for (Town visited : this.checked) {
+				// Variables
+				java.util.Set<Town> c = visited.towns;
+				java.util.Set<Town> uc = new java.util.HashSet<Town>();
+				
+				// Loops
+				for (Town t : c) {
+					// Checks
+					if (unchecked.contains(t) == false) { continue; }
+					
+					// Found
+					uc.add(t);
 				}
-				for (Town unvisitedTown : adjTownsUnVisited) {
-					int totalWeight = getTotalWeight(unvisitedTown, visitedTown, sourceVertex);
-					if (totalWeight < shortest) {
-						shortest = totalWeight;
-
-						closestTown = unvisitedTown;
-
-						unvisitedTown.setBackpath(visitedTown);
+				for (Town t : uc) {
+					// Variables
+					int weight = this.calculateWeights(t, visited, s);
+					
+					// Checks
+					if (weight < shortestDistance) {
+						shortestDistance = weight;
+						shortestTown = t;
+						t.previous = visited;
 					}
 				}
 
 			}
-			if (closestTown != null) {
-				closestTown.setWeight(shortest);
-				visitedTowns.add(closestTown);
-				unVisitedTowns.remove(closestTown);
-				finiding = false;
+			
+			// Checks
+			if (shortestTown != null) {
+				found = false;
+				shortestTown.weight = shortestDistance;
+				checked.add(shortestTown);
+				unchecked.remove(shortestTown);
 			}
 		}
-
 	}
-
-	private int getTotalWeight(Town unvisitedTown, Town visitedTown, Town sourceVertex) {
-		if (unvisitedTown.equals(sourceVertex))
-			return 0;
-
-		return visitedTown.getWeight() + getEdge(visitedTown, unvisitedTown).getWeight();
+	
+	/**
+	 * Build Path To Destination ArrayList
+	 * 
+	 * @param ArrayList<String> paths
+	 * @param Town source
+	 * @param Town destination
+	 * @return None
+	 * @throws None
+	 */
+	protected void buildPaths(java.util.ArrayList<String> paths, Town s, Town d) {
+		// Checks
+		try {
+			// Variables
+			StringBuilder path = new StringBuilder();
+			Road r = this.getEdge(d.previous, d); // Throws NPTR
+			
+			// Build Path String
+			path.append(d.previous.getName());
+			path.append(" via ");
+			path.append(r.getName());
+			path.append(" to ");
+			path.append(d.getName());
+			path.append(" ");
+			path.append(r.getWeight());
+			path.append(" mi");
+			paths.add(path.toString());
+			
+			// Checks
+			if (d.previous.equals(s) == false) {
+				this.buildPaths(paths, s, d.previous);
+			}
+		} catch(Exception e) {
+			paths.clear();
+		}
 	}
+	
+	/**
+	 * Calculate Total Weight For Towns
+	 * 
+	 * @param Town unvisited
+	 * @param Town visited
+	 * @param Town source
+	 * @return Integer weight
+	 * @throws None
+	 */
+	protected int calculateWeights(Town u, Town v, Town s) {
+		return u.equals(s) ? 0 : v.weight + this.getEdge(v, u).weight;
+	}
+	
 }

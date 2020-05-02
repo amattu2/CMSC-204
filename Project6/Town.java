@@ -9,9 +9,9 @@
 public class Town implements java.lang.Comparable<Town> {
 	// Class Variables
 	protected String name = "";
-	protected java.util.Set<Town> adjecentTowns = new java.util.HashSet<Town>();
+	protected java.util.Set<Town> towns = new java.util.HashSet<Town>();
 	protected int weight = Integer.MAX_VALUE;
-	protected Town backpath = null;
+	protected Town previous = null;
 	
 	/**
 	 * Class Constructor
@@ -46,8 +46,7 @@ public class Town implements java.lang.Comparable<Town> {
 	 */
 	public void reset() {
 		this.weight = Integer.MAX_VALUE;
-		this.backpath = null;
-		this.adjecentTowns = new java.util.HashSet<Town>();
+		this.previous = null;
 	}
 	
 	/**
