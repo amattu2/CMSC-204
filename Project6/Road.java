@@ -149,9 +149,6 @@ public class Road implements java.lang.Comparable<Road> {
 	
 	/**
 	 * Compare Two Roads
-	 * Compares Road (this) to Road (r)
-	 * 0 = Equal
-	 * 1 = Not Equal (No way to determine -1/1)
 	 * 
 	 * @param Road road
 	 * @return Integer comparison
@@ -159,6 +156,6 @@ public class Road implements java.lang.Comparable<Road> {
 	 */
 	@Override
 	public int compareTo(Road r) {
-		return this.equals(r) == true ? 0 : 1;
+		return this.getWeight() - r.getWeight();
 	}
 }

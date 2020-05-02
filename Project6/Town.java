@@ -2,16 +2,16 @@
  * A town representation data class
  * 
  * @author Alec M.
- * @date 04/30/2020
- * @version 0.02b
+ * @date 05/02/2020
+ * @version 0.02c
  * @see Town.html
  */
 public class Town implements java.lang.Comparable<Town> {
 	// Class Variables
 	protected String name = "";
-	protected java.util.LinkedList<Town> paths = new java.util.LinkedList<Town>();
-	protected java.util.Map<Town, Integer> towns = new java.util.HashMap<Town, Integer>(); // Town, Distance
-	protected int distance = Integer.MAX_VALUE;
+	protected java.util.Set<Town> adjecentTowns = new java.util.HashSet<Town>();
+	protected int weight = Integer.MAX_VALUE;
+	protected Town backpath = null;
 	
 	/**
 	 * Class Constructor
@@ -35,6 +35,19 @@ public class Town implements java.lang.Comparable<Town> {
 	public Town(Town t) {
 		// Variables
 		this.name = t.name;
+	}
+	
+	/**
+	 * Reset Local Variables
+	 * 
+	 * @param None
+	 * @return None
+	 * @throws None
+	 */
+	public void reset() {
+		this.weight = Integer.MAX_VALUE;
+		this.backpath = null;
+		this.adjecentTowns = new java.util.HashSet<Town>();
 	}
 	
 	/**
@@ -95,6 +108,6 @@ public class Town implements java.lang.Comparable<Town> {
 	 */
 	@Override
 	public int compareTo(Town t) {
-		return this.name.toLowerCase().equals(t.name.toLowerCase()) ? 0 : 1;
+		return this.name.compareTo(t.name);
 	}
 }

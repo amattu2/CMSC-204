@@ -1,0 +1,71 @@
+Attempt 4
+The way edges are declared is handled differently than i handle it and so it wont work
+
+	@Override
+	public ArrayList<String> shortestPath(Town s, Town d) {
+		System.out.println("---------------");
+		System.out.println("TownGraph.shortestGraph [" + s + ", " + d +"]");
+		System.out.println(this.towns);
+
+		dijkstraShortestPath(s);
+		System.out.println(this.towns);
+		
+		for (Town v : this.towns) {
+			System.out.println("Distance to " + v + ": " + v.minDistance);
+			List<Town> path = getShortestPathTo(v);
+			System.out.println("Path: " + path);
+		}
+		
+		return null;
+	}
+
+	// should be removed
+	public void displayShortestPaths(Town start) {
+		dijkstraShortestPath(start);
+		for (Town v : this.towns) {
+			System.out.println("Distance to " + v + ": " + v.minDistance);
+			List<Town> path = getShortestPathTo(v);
+			System.out.println("Path: " + path);
+		}
+	}
+	
+	/**
+	 * http://www.science.smith.edu/dftwiki/index.php/CSC212_Dijkstra%27s_Shortest_Path
+	 */
+	public void dijkstraShortestPath(Town source) {
+		source.minDistance = 0.0;
+		PriorityQueue<Town> vertexQueue = new PriorityQueue<Town>();
+		vertexQueue.add(source);
+
+		while (!vertexQueue.isEmpty()) {
+			Town u = vertexQueue.poll();
+			System.out.println(u.adj);
+			// Visit each edge emanating from u
+			for (Road e : u.adj) {
+				System.out.println(e);
+				Town v = e.destination;
+				double weight = e.weight;
+				double distanceThroughU = u.minDistance + weight;
+				if (distanceThroughU < v.minDistance) {
+					vertexQueue.remove(v);
+					v.minDistance = distanceThroughU;
+					v.predecessor = u;
+					vertexQueue.add(v);
+				}
+			}
+		}
+	}
+
+	/**
+	 * Return an ArrayList of vertices that go from source (see Dijkstra)
+	 * to target.
+	 * @param target the destination of the path.
+	 * @return an arraylist of vertices
+	 */
+	public static List<Town> getShortestPathTo(Town target) {
+		List<Town> path = new ArrayList<Town>();
+		for (Town vertex = target; vertex != null; vertex = vertex.predecessor)
+			path.add(vertex);
+		Collections.reverse(path);
+		return path;
+	}
