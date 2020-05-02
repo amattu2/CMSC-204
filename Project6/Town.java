@@ -35,6 +35,9 @@ public class Town implements java.lang.Comparable<Town> {
 	public Town(Town t) {
 		// Variables
 		this.name = t.name;
+		this.weight = t.weight;
+		this.towns = t.towns;
+		this.previous = t.previous;
 	}
 	
 	/**
