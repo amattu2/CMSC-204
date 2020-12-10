@@ -1,5 +1,8 @@
 # Introduction
-This is a repo for all projects and labs within the CMSC204 Computer Science track (Montgomery College, Proj. Gary Thai).
+This is a repo for all projects and labs within the CMSC204 Computer Science track at Montgomery College.
+
+Teachers:
+- Prof. Gary Thai M.S.
 
 # Project Grades
 
@@ -15,5 +18,8 @@ This is a repo for all projects and labs within the CMSC204 Computer Science tra
 # Notes
 Labs 1, 6, 7, 8, 9, 10 were written labs and not code based.
 
+It goes without saying, CMSC204 students should not make use of this repository for any reason.
+
 # Requirements & Dependencies
-N/A
+Languages
+- Java
